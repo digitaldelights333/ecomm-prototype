@@ -58,6 +58,12 @@ parts.append("""<style>
 html{height:100%;}
 body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;min-height:100%;display:flex;flex-direction:column;}
 main{flex:1;}
+/* NEW EXPERIENCE BANNER (Level 1 only) */
+.new-exp-banner{background:#1A1A1A;color:#fff;display:flex;align-items:center;justify-content:center;padding:10px 48px 10px 20px;font-size:13px;line-height:1.4;position:relative;}
+.new-exp-banner a{color:var(--yellow);text-decoration:underline;text-underline-offset:2px;white-space:nowrap;}
+.new-exp-banner a:hover{opacity:.85;}
+.banner-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;cursor:pointer;font-size:20px;line-height:1;padding:4px 8px;border-radius:2px;transition:opacity .12s;}
+.banner-close:hover{opacity:.7;}
 .site-header{background:#000;position:sticky;top:env(safe-area-inset-top,0px);z-index:100;}
 .hdr-inner{max-width:1280px;margin:0 auto;padding:0 16px;height:54px;display:flex;align-items:center;gap:10px;}
 .hdr-left{display:flex;align-items:center;gap:8px;flex-shrink:0;}
@@ -105,9 +111,11 @@ main{flex:1;}
 .page-title h1{font-size:24px;font-weight:700;color:var(--text);display:inline-block;padding-bottom:7px;border-bottom:3px solid var(--yellow);}
 .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:48px;}
 .cat-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;display:flex;align-items:stretch;text-decoration:none;color:var(--text);min-height:130px;transition:box-shadow .15s,border-color .15s;overflow:hidden;}
-.cat-card.inert{cursor:default;pointer-events:none;}
+.cat-card.inert{cursor:default;}
+.cat-card.inert:hover{border-color:#000;box-shadow:0 2px 10px rgba(0,0,0,.1);}
 .cat-card.active{cursor:pointer;}
-.cat-card.active:hover{border-color:#bbb;box-shadow:0 2px 10px rgba(0,0,0,.1);}
+.cat-card.active:hover{border-color:#000;box-shadow:0 2px 10px rgba(0,0,0,.1);}
+#drivetrain-card:hover{border-color:var(--yellow);box-shadow:0 2px 10px rgba(255,205,17,.25);}
 .card-img{width:140px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:12px;}
 .card-img img{width:110px;height:110px;object-fit:contain;display:block;mix-blend-mode:multiply;}
 .card-body{flex:1;padding:0 18px;display:flex;align-items:center;}
@@ -144,7 +152,12 @@ main{flex:1;}
 }
 </style>""")
 
-parts.append("""<header class="site-header">
+parts.append("""<div class="new-exp-banner" id="newExpBanner" role="banner">
+  You&#8217;re navigating a redesigned experience.&nbsp;
+  <a href="#" onclick="return false;">Return to the legacy website</a>
+  <button class="banner-close" type="button" aria-label="Dismiss banner" onclick="this.parentElement.hidden=true;">&#215;</button>
+</div>
+<header class="site-header">
   <div class="hdr-inner">
     <div class="hdr-left">
       <div class="cat-wrap">
@@ -266,12 +279,18 @@ parts.append("""<script>
   spinLogo();
 })();
 (function(){
+  var allMenus=[];
   function dropdown(wrapSel,menuSel){
     var wrap=document.querySelector(wrapSel),menu=document.querySelector(menuSel);
     if(!wrap||!menu)return;
+    allMenus.push(menu);
     var t;
-    function show(){clearTimeout(t);menu.classList.add('open');}
-    function hide(){t=setTimeout(function(){menu.classList.remove('open');},150);}
+    function show(){
+      clearTimeout(t);
+      allMenus.forEach(function(m){if(m!==menu)m.classList.remove('open');});
+      menu.classList.add('open');
+    }
+    function hide(){t=setTimeout(function(){menu.classList.remove('open');},0);}
     wrap.addEventListener('mouseenter',show);
     wrap.addEventListener('mouseleave',hide);
     menu.addEventListener('mouseenter',show);
