@@ -13,11 +13,9 @@ def b64img(name, ext="webp"):
 LOGO = b64img("logo")
 
 # Real product images from parts.cat.com Drivetrain page 1 (model=320, serialNumber=ZBN60173)
-# 8X-9620 and 8W-0212 are confirmed CAT logo placeholders (720-882B) — use LOGO for those
-_REAL_IMG_PARTS = ["595-3692","226-2826","2A-6946","8R-7036","106-0933","150-8355",
-                   "436-2594","384-4562","0R-9043","290-4140","365-4922","255-0902",
-                   "562-8118","381-3629",
-                   "303-2504","163-9366","363-1924","563-8599"]
+_REAL_IMG_PARTS = ["567-4399","148-4636","122-9608","4B-9880","174-4874","561-7005",
+                   "296-6220","2D-6642","523-0574","3D-2891","333-2998","593-5616",
+                   "517-4512","378-9517"]
 PI = {p: b64img("prod_" + p) for p in _REAL_IMG_PARTS}
 MACH = b64img("mach")  # 320 Excavator machine photo
 NO_IMG = b64img("no-image")  # Official CAT placeholder for products without a photo
@@ -125,35 +123,79 @@ SPECS = [
 # Products: (part_num, name, description, fit, has_img)
 # fit = "fits" (green badge) or "unverified" (no badge)
 # has_img = True for real product photo, False for CAT logo placeholder
-# Prototype order: factory fit first, then unverified; within each group, real page order
 PRODUCTS = [
-    # --- Factory fit + real image (page 1 & 2 order) ---
-    ("595-3692","Engine Cylinder Piston","Cat® Engine Cylinder Piston converts combustion energy into mechanical motion, driving the crankshaft to power the equipment","fits",True),
-    ("226-2826","874.5mm Outer Diameter Brake Friction Disc","Cat® Friction Disc (Brake)","fits",True),
-    ("2A-6946","Link Group-Steering","Cat® Steering Link Group","fits",True),
-    ("8R-7036","Universal Joint Bearing Spider","Cat® part 8R-7036 universal joint bearing spider transmits rotational motion between two intersecting shafts.","fits",True),
-    ("106-0933","Universal Joint Assembly","Cat® Universal Joint Assembly (10C)","fits",True),
-    ("150-8355","Universal Joint Assembly","Cat® Universal Joint Assembly (14.5C Interlock)","fits",True),
-    ("436-2594","101.62mm Inner Diameter Roller Bearing","Shop Cat® cylindrical roller bearing for off-highway truck final drive. 436-2594 is for low to medium-speed and high-load applications.","fits",True),
-    ("0R-9043","Wheel Arrangement","You can have it all with Cat Reman. Best-built Cat® parts with full warranty when and where you need them - all at a fraction of the price.","fits",True),
-    ("365-4922","538.62mm Outer Diameter Duo Cone Seal","Cat® parts duo cone seal maintains a tight seal and avoid oil leakage. Shop this part for machines compatible with 365-4922.","fits",True),
-    ("303-2504","Joint Group-Slip","Cat® Joint Group-Slip","fits",True),
-    ("163-9366","2.413mm Thick Outer Plate","Cat® 2.413mm Thick Outer Plate for Service and Parking Brake","fits",True),
-    ("363-1924","Joint Group-Slip","Cat® Slip Joint Group (15.5C)","fits",True),
-    # --- Factory fit + no image ---
-    ("8W-0212","2.413mm Thick Outer Plate","Cat® 2.413mm Thick Outer Plate for Service and Parking Brake","fits",False),
-    # --- Not factory fit + real image ---
-    ("384-4562","Bearing Assembly","Find premium bearing assembly and more with Cat. Explore reliable heavy-duty components like alternators and batteries for your needs.","unverified",True),
-    ("290-4140","190.27mm Transmission Steel Planet Gear","Cat® Planet Gear (Final Drive)","unverified",True),
-    ("255-0902","Drive Shaft Spider Bearing","Cat® 255-0902 drive shaft spider bearing supports and aligns the bearings for smooth power transmission.","unverified",True),
-    ("562-8118","240S Roller 27 Links Drive Chain","Cat® Roller Chain for tandem drive connecting multiple axles or wheels to transmit power from the engine to the driven wheels","unverified",True),
-    ("381-3629","1066.8mm Outer Diameter Brake Friction Disc","Cat® Friction Disc (Brake)","unverified",True),
-    ("563-8599","Duo Seal Group","Shop Cat® parts duo cone seal group to protect against particle intrusion for machines compatible with 563-8599.","unverified",True),
-    # --- Not factory fit + no image ---
-    ("8X-9620","295mm Long Ball Stud","Shop Cat® 295mm long ball stud used in steering cylinder rod end mounting and steering tie rod linkage for machines compatible with 8X-9620.","unverified",False),
+    ("567-4399","Swing Gear Bearing","Cat® Swing Gear Bearing","fits",True),
+    ("148-4636","34, 14 External Teeth Pinion Shaft","Cat® Pinion Shaft for transmitting power from the swing motor to the swing gear","unverified",True),
+    ("567-7173","Single Row Tapered Roller Bearing","Cat® Single Row Tapered Roller Bearing, ID X OD X W: 254 X 315.9 X 34mm","fits",False),
+    ("122-9608","Right Hand Side Rubber Pedal","Cat® Right Hand Side Pilot Control Valve Rubber Pedal offers durability in demanding environments","fits",True),
+    ("4B-9880","7.938mm Outer Diameter Check Ball","Cat® Check Ball for governor cutoff valve preventing backflow and contamination","fits",True),
+    ("174-4874","333.12mm Outside Diameter Duo Cone Seal","Cat® Duo Cone Seal","unverified",True),
+    ("561-7005","Control Group-Pedal","Cat® Control Group-Pedal","unverified",True),
+    ("296-6220","240mm Internal Diameter Ball Bearing","Cat® 310mm Outer Diameter Ball Bearing Used for Final Drive","unverified",True),
+    ("2D-6642","6.35mm Spherical Diameter Steel Ball","Cat® Ball (Check)","unverified",True),
+    ("584-2564","Right Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the undercarriage","unverified",False),
+    ("523-0574","533.5mm Outer Diameter Final Drive","Cat® General Duty Small Excavator Final Drive","unverified",True),
+    ("3D-2891","12.7mm Spherical Diameter Steel Ball","Cat® Ball Bearing (Loose ball only)","fits",True),
+    ("584-2563","Left Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the undercarriage","unverified",False),
+    ("333-2998","533mm Outer Diameter Sprocket Housing","Cat® 533mm Outer Diameter Sprocket Ductile Iron Housing for Final Drive","unverified",True),
+    ("569-4288","90 Internal Teeth Ring Gear","Cat® Ring Gear, 90 Teeth","fits",False),
+    ("593-5616","Planetary Gear","Cat® Planetary Gear","fits",True),
+    ("517-4512","Control Group-Electronic","Electronic Control Group (A6N1 Yellow Key)","fits",True),
+    ("569-4292","351.8mm Outer Diameter Duo Cone Seal","Cat® Duo Cone Seal (320), Steel and Rubber, Inside Diameter: 319mm","fits",False),
+    ("569-4287","35 Tooth Planetary Gear","Planet Gear","fits",False),
+    ("378-9517","Drive Group-Swing","Cat® Swing Drive Group (Without Motor)","unverified",True),
 ]
 
 INFO_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
+
+FIT_CHECK_LG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2E7D32"/><polyline points="20 6 9 17 4 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>'
+FIT_CHECK_SM = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2E7D32"/><polyline points="20 6 9 17 4 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>'
+REMAN_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>'
+NO_RETURN_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>'
+KIT_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>'
+REPLACED_SVG = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>'
+
+FIT_BANNER_HTML = (
+    '<div class="fit-banner-wrap" id="fitBannerWrap">'
+    '<div class="fit-banner-full">'
+    '<div class="fit-banner-left">'
+    '<div class="fit-banner-title">' + FIT_CHECK_LG + ' Factory Fit</div>'
+    '<p class="fit-banner-subtitle">This part is designed to fit your Cat equipment based on the manufacturer\'s specifications.</p>'
+    '<p class="fit-banner-body">Any changes to the manufacturer\'s configuration might result in the product not fitting your Cat equipment. Please consult your Cat Dealer before purchasing to ensure that this part is appropriate for your Cat equipment in its current condition and assumed configuration. This indicator cannot guarantee compatibility for all parts.</p>'
+    '</div>'
+    '<div class="fit-banner-right">'
+    '<div class="fit-banner-item">' + REMAN_SVG + ' Remanufactured</div>'
+    '<div class="fit-banner-item">' + NO_RETURN_SVG + ' Non-Returnable</div>'
+    '<div class="fit-banner-item">' + KIT_SVG + ' Kit</div>'
+    '<div class="fit-banner-item">' + REPLACED_SVG + ' Replaced</div>'
+    '</div>'
+    '<button class="fit-banner-close" id="fitBannerClose" type="button" aria-label="Close">&times;</button>'
+    '</div>'
+    '</div>'
+)
+
+FIT_LEGEND_HTML = (
+    '<div class="fit-legend-strip" id="fitLegendStrip" hidden>'
+    '<div class="fit-legend-inner">'
+    '<div class="fit-legend-item">' + FIT_CHECK_SM + ' Factory Fit</div>'
+    '<div class="fit-legend-item">' + REMAN_SVG + ' Remanufactured</div>'
+    '<div class="fit-legend-item">' + NO_RETURN_SVG + ' Non-Returnable</div>'
+    '<div class="fit-legend-item">' + KIT_SVG + ' Kit</div>'
+    '<div class="fit-legend-item">' + REPLACED_SVG + ' Replaced</div>'
+    '</div>'
+    '</div>'
+)
+
+TYPE_CHIPS_HTML = (
+    '<div class="type-filter-row">'
+    '<button class="type-chip active" data-type="all" type="button">All</button>'
+    '<button class="type-chip" data-type="factory-fit" type="button">' + FIT_CHECK_SM + ' Factory Fit</button>'
+    '<button class="type-chip" data-type="reman" type="button">' + REMAN_SVG + ' Remanufactured</button>'
+    '<button class="type-chip" data-type="non-return" type="button">' + NO_RETURN_SVG + ' Non-Returnable</button>'
+    '<button class="type-chip" data-type="kit" type="button">' + KIT_SVG + ' Kit</button>'
+    '<button class="type-chip" data-type="replaced" type="button">' + REPLACED_SVG + ' Replaced</button>'
+    '</div>'
+)
 
 CHAR_LIMIT = 100
 
@@ -167,17 +209,22 @@ def prod_card(num, name, desc, fit='fits', has_img=True):
     if fit == 'fits':
         badge = (
             '<div class="fit-badge fits" data-fit="badge">'
-            '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>'
-            ' Factory Fit 320 Excavator'
+            + FIT_CHECK_SM +
+            ' Factory Fit 320 ZBN60173'
             '</div>'
         )
     else:
         badge = ''
-    blend = ' style="mix-blend-mode:multiply;"' if has_img else ''
+    if has_img:
+        blend = ' style="mix-blend-mode:multiply;"'
+        img_cls = ''
+    else:
+        blend = ''
+        img_cls = ' class="no-img"'
     return (
         '<div class="prod-card">'
         '<div class="prod-img">'
-        '<img src="' + img_src + '" alt="' + name + '" width="140" height="140"' + blend + '>'
+        '<img src="' + img_src + '" alt="' + name + '" width="140" height="140"' + img_cls + blend + '>'
         '</div>'
         '<div class="prod-info">'
         '<span class="prod-num">' + num + '</span>'
@@ -199,11 +246,11 @@ parts.append("""<style>
 :root{color-scheme:light;--yellow:#FFCD11;--bg:#fff;--card-bg:#F7F7F7;--border:#E0E0E0;--text:#111;--muted:#666;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;}
-body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;display:flex;flex-direction:column;}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;display:flex;flex-direction:column;padding-top:54px;}
 main{flex:1;}
 a{color:inherit;text-decoration:none;}
 /* HEADER */
-.site-header{background:#000;position:sticky;top:env(safe-area-inset-top,0px);z-index:100;}
+.site-header{background:#000;position:fixed;top:0;left:0;right:0;z-index:100;}
 .hdr-inner{max-width:1280px;margin:0 auto;padding:0 16px;height:54px;display:flex;align-items:center;gap:10px;}
 .hdr-left{display:flex;align-items:center;gap:8px;flex-shrink:0;}
 .hdr-center{flex:1;display:flex;justify-content:center;min-width:0;}
@@ -262,19 +309,8 @@ a{color:inherit;text-decoration:none;}
 .unit-toggle{display:flex;background:#E8E8E8;border-radius:20px;padding:2px;margin-bottom:12px;}
 .unit-btn{flex:1;border:none;background:none;padding:4px 10px;border-radius:18px;font-size:12px;font-family:inherit;cursor:pointer;color:#666;font-weight:500;transition:background .12s,color .12s;}
 .unit-btn.active{background:#fff;color:#111;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12);}
-/* Spec accordion */
-.spec-filter{border-bottom:1px solid var(--border);}
-.spec-filter summary{padding:9px 0;font-size:13px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;user-select:none;}
-.spec-filter summary::-webkit-details-marker{display:none;}
-.spec-filter summary::after{content:"";width:8px;height:8px;border-right:2px solid #888;border-bottom:2px solid #888;transform:rotate(45deg);flex-shrink:0;margin-top:-4px;}
-.spec-filter[open] summary::after{transform:rotate(-135deg);margin-top:2px;}
-.spec-options{padding:4px 0 10px;}
-.spec-option{display:flex;align-items:center;gap:7px;padding:4px 0;font-size:12px;color:var(--text);}
-.spec-option input[type="checkbox"]{width:14px;height:14px;cursor:pointer;flex-shrink:0;-webkit-appearance:none;appearance:none;background:#fff;border:1.5px solid #bbb;border-radius:3px;position:relative;transition:border-color .12s;}
-.spec-option input[type="checkbox"]:hover{border-color:#888;}
-.spec-option input[type="checkbox"]:checked{background:#fff;border-color:#666;}
-.spec-option input[type="checkbox"]:checked::after{content:"";position:absolute;left:3px;top:0;width:5px;height:9px;border:2px solid #333;border-top:none;border-left:none;transform:rotate(45deg);}
-.spec-option label{cursor:pointer;line-height:1.3;}
+/* Spec filter labels */
+.spec-filter-label{padding:9px 0;font-size:13px;border-bottom:1px solid var(--border);color:var(--text);}
 /* Equipment context button in search bar (L2/L3) */
 .equip-context-btn{display:flex;align-items:center;gap:6px;background:var(--yellow);border:none;border-right:1px solid #D0D0D0;padding:0 14px;cursor:pointer;white-space:nowrap;flex-shrink:0;font-size:13px;font-weight:700;color:#111;font-family:inherit;height:36px;transition:background .12s;}
 .equip-context-btn:hover{background:#e6b800;}
@@ -286,15 +322,15 @@ a{color:inherit;text-decoration:none;}
 /* PRODUCT GRID — CSS Grid stretch gives uniform row heights */
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 /* EQUIPMENT CARD */
-.equip-card{background:#fff;border:2px solid var(--yellow);border-radius:10px;padding:18px 18px 12px;display:flex;flex-direction:column;}
+.equip-card{background:#fff;border:2px solid var(--yellow);border-radius:10px;padding:18px 18px 56px;display:flex;flex-direction:column;position:relative;}
 .equip-mach-img{width:100%;height:100px;object-fit:contain;border-radius:6px;background:#F7F7F7;flex-shrink:0;margin-bottom:8px;}
 .equip-card-title{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;margin-bottom:12px;}
 /* Confirmed state — Change button pushed to bottom matching Add to Cart row */
-.equip-confirmed{display:flex;flex-direction:column;align-items:center;flex:1;text-align:center;gap:6px;}
+.equip-confirmed{display:flex;flex-direction:column;align-items:center;flex:1;text-align:center;gap:6px;justify-content:center;}
 .equip-conf-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#888;}
 .equip-conf-model{font-size:15px;font-weight:700;color:var(--text);}
 .equip-conf-serial{font-size:11px;color:var(--muted);}
-.equip-change-btn{background:none;border:1px solid #CCC;border-radius:22px;padding:8px 14px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;color:var(--muted);margin-top:auto;width:100%;transition:border-color .12s,color .12s;}
+.equip-change-btn{background:none;border:1px solid #CCC;border-radius:22px;padding:8px 14px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;color:var(--muted);position:absolute;bottom:12px;left:18px;right:18px;transition:border-color .12s,color .12s;}
 .equip-change-btn:hover{border-color:#999;color:#333;}
 /* Edit state */
 .equip-edit{display:none;flex-direction:column;flex:1;gap:9px;}
@@ -312,6 +348,7 @@ a{color:inherit;text-decoration:none;}
 .prod-card:hover{border-color:#000;box-shadow:0 2px 10px rgba(0,0,0,.1);}
 .prod-img{width:100%;height:160px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
 .prod-img img{width:110px;height:110px;object-fit:contain;}
+.prod-img img.no-img{width:140px;height:140px;}
 .prod-info{padding:10px 12px 12px;display:flex;flex-direction:column;flex:1;}
 .prod-num{font-family:"Roboto Mono",monospace;font-size:11px;font-weight:500;color:#555;letter-spacing:.02em;margin-bottom:4px;}
 .prod-name{font-size:13px;font-weight:600;line-height:1.3;color:var(--text);margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
@@ -319,9 +356,8 @@ a{color:inherit;text-decoration:none;}
 .more-link{color:#555;font-weight:600;font-size:11px;white-space:nowrap;}
 .more-link:hover{color:#000;text-decoration:underline;}
 .prod-bottom{margin-top:auto;display:flex;flex-direction:column;gap:7px;}
-.fit-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;width:fit-content;transition:background .2s,color .2s;}
-.fit-badge.unverified{background:#FFF3E0;color:#E65100;}
-.fit-badge.fits{background:#E8F5E9;color:#2E7D32;}
+.fit-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;}
+.fit-badge.fits{color:#2E7D32;}
 .add-cart-btn{width:100%;background:var(--yellow);border:none;padding:8px;border-radius:22px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:background .12s;}
 .add-cart-btn:hover{background:#e6b800;}
 /* PAGINATION */
@@ -338,6 +374,28 @@ a{color:inherit;text-decoration:none;}
 .footer-legal{font-size:11px;color:#333;line-height:2;margin-bottom:7px;}
 .footer-legal .pipe{margin:0 5px;color:#666;}
 .footer-copy{font-size:11px;color:#333;font-weight:600;}
+/* FIT BANNER */
+.fit-banner-wrap{margin-bottom:16px;}
+.fit-banner-full{background:#fff;border:1px solid #e0e0e0;border-left:3px solid #2E7D32;border-radius:8px;padding:16px 20px 14px;display:flex;gap:24px;position:relative;}
+.fit-banner-left{flex:1;min-width:0;}
+.fit-banner-title{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#1a5c1a;margin-bottom:8px;}
+.fit-banner-subtitle{font-size:13px;font-weight:600;color:#111;margin-bottom:6px;line-height:1.4;}
+.fit-banner-body{font-size:12px;color:#555;line-height:1.55;}
+.fit-banner-right{flex-shrink:0;display:flex;flex-direction:column;justify-content:center;gap:12px;min-width:165px;border-left:1px solid #e0e0e0;padding-left:20px;}
+.fit-banner-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#111;}
+.fit-banner-close{position:absolute;top:8px;right:10px;background:none;border:none;cursor:pointer;color:#bbb;font-size:22px;line-height:1;padding:1px 5px;border-radius:3px;font-family:inherit;transition:color .12s;}
+.fit-banner-close:hover{color:#333;}
+/* LEGEND STRIP — fixed below header after banner is dismissed */
+.fit-legend-strip{position:fixed;top:54px;left:0;right:0;z-index:99;background:#fff;border-bottom:1px solid #e0e0e0;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+.fit-legend-inner{max-width:1280px;margin:0 auto;padding:7px 20px;display:flex;align-items:center;}
+.fit-legend-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#111;padding:0 14px;border-right:1px solid #ddd;white-space:nowrap;}
+.fit-legend-item:first-child{padding-left:0;}
+.fit-legend-item:last-child{border-right:none;}
+/* TYPE FILTER CHIPS */
+.type-filter-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.type-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border:1px solid var(--border);border-radius:22px;font-size:12px;font-weight:500;font-family:inherit;background:#fff;color:var(--text);cursor:pointer;transition:background .12s,border-color .12s,color .12s;white-space:nowrap;}
+.type-chip:hover{border-color:#888;}
+.type-chip.active{background:#111;border-color:#111;color:#fff;}
 /* AI BTN */
 .ai-btn{position:fixed;bottom:26px;right:26px;width:54px;height:54px;border-radius:50%;background:#000;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.4);z-index:999;padding:10px;transition:transform .15s;}
 .ai-btn:hover{transform:scale(1.06);}
@@ -419,26 +477,17 @@ parts.append('<div class="page-layout">')
 
 # SIDEBAR
 cat_links = "\n".join(
-    '<li><a href="#" onclick="return false;">' + c + ' <span style="color:#999;font-size:11px;">(' + str(n) + ')</span></a></li>'
+    '<li><a href="#" onclick="return false;">' + c + '</a></li>'
     for c, n in CATS
 )
 
-def spec_filter_html(label, options):
-    if options is None:
-        return '<details class="spec-filter"><summary>' + label + '</summary></details>'
-    inner = '<div class="spec-options">'
-    for i, opt in enumerate(options):
-        uid = 'sf_' + label.replace(' ','_').lower() + '_' + str(i)
-        if isinstance(opt, tuple):
-            # Has US/Metric variants
-            us_v, met_v = opt
-            val_html = '<span class="val-us">' + us_v + '</span><span class="val-metric" hidden>' + met_v + '</span>'
-        else:
-            val_html = opt
-        inner += '<div class="spec-option"><input type="checkbox" id="' + uid + '"><label for="' + uid + '">' + val_html + '</label></div>'
-    inner += '</div>'
-    open_attr = ' open' if label == 'Diameter' else ''
-    return '<details class="spec-filter"' + open_attr + '><summary>' + label + '</summary>' + inner + '</details>'
+def spec_filter_html(label, options=None):
+    if '(in)' in label:
+        base = label.replace(' (in)', '')
+        label_html = '<span>' + base + '<span class="lbl-us"> (in)</span><span class="lbl-mm" hidden> (mm)</span></span>'
+    else:
+        label_html = '<span>' + label + '</span>'
+    return '<div class="spec-filter-label">' + label_html + '</div>'
 
 spec_html = "\n".join(spec_filter_html(label, opts) for label, opts in SPECS)
 
@@ -461,12 +510,13 @@ parts.append("""<div class="sort-bar">
   <span class="sort-label">Sort by</span>
   <select class="sort-select" disabled aria-label="Sort by">
     <option>Relevance</option>
-    <option>Price: Low to High</option>
-    <option>Price: High to Low</option>
+    <option>Name</option>
     <option>Part Number</option>
   </select>
 </div>""")
 
+parts.append(TYPE_CHIPS_HTML)
+parts.append(FIT_BANNER_HTML)
 parts.append('<div class="prod-grid">')
 
 # Equipment card — starts in CONFIRMED state (equipment pre-selected from URL params)
@@ -585,6 +635,21 @@ parts.append("""<script>
     btn.addEventListener('mouseleave',function(){hovering=false;if(adone){ring.style.animation='none';ring.style.transform='rotate(0deg)';}});
   }
 
+  var fitClose=document.getElementById('fitBannerClose');
+  var fitBannerWrap=document.getElementById('fitBannerWrap');
+  if(fitClose){
+    fitClose.addEventListener('click',function(){
+      fitBannerWrap.hidden=true;
+    });
+  }
+
+  document.querySelectorAll('.type-chip').forEach(function(chip){
+    chip.addEventListener('click',function(){
+      document.querySelectorAll('.type-chip').forEach(function(c){c.classList.remove('active');});
+      chip.classList.add('active');
+    });
+  });
+
   var equipChange=document.getElementById('equipChange');
   var equipCancel=document.getElementById('equipCancel');
   var equipSubmit=document.getElementById('equipSubmit');
@@ -611,7 +676,7 @@ parts.append("""<script>
       badges.forEach(function(b){
         b.classList.remove('unverified');
         b.classList.add('fits');
-        b.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Factory Fit '+model;
+        b.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2E7D32"/><polyline points="20 6 9 17 4 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Factory Fit '+model;
       });
     }
   }
@@ -636,8 +701,8 @@ parts.append("""<script>
 })();
 
 function setUnit(u){
-  document.querySelectorAll('.val-us').forEach(function(e){e.hidden=u!=='us';});
-  document.querySelectorAll('.val-metric').forEach(function(e){e.hidden=u!=='metric';});
+  document.querySelectorAll('.val-us,.lbl-us').forEach(function(e){e.hidden=u!=='us';});
+  document.querySelectorAll('.val-metric,.lbl-mm').forEach(function(e){e.hidden=u!=='metric';});
   var btnUS=document.getElementById('unitUS');
   var btnMet=document.getElementById('unitMetric');
   if(btnUS)btnUS.classList.toggle('active',u==='us');
