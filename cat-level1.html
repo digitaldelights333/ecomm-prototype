@@ -9,16 +9,16 @@
 :root{color-scheme:light;--yellow:#FFCD11;--bg:#fff;--card-bg:#F7F7F7;--border:#E0E0E0;--text:#111;--muted:#666;--green:#2E7D32;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html,body{min-height:100%;}
-body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;padding-top:54px;display:flex;flex-direction:column;}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;padding-top:62px;display:flex;flex-direction:column;}
 a{color:inherit;text-decoration:none;}
 .site-header{background:#000;position:fixed;top:0;left:0;right:0;z-index:100;}
-.hdr-inner{max-width:1280px;margin:0 auto;padding:0 16px;height:54px;display:flex;align-items:center;gap:10px;}
+.hdr-inner{max-width:1280px;margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:10px;}
 .hdr-left{display:flex;align-items:center;gap:8px;flex-shrink:0;}
 .hdr-center{flex:1;display:flex;justify-content:center;min-width:0;}
 .hdr-right{display:flex;align-items:center;gap:2px;flex-shrink:0;}
 .cat-wrap{position:relative;}
 .cat-logo{text-decoration:none;display:flex;align-items:center;gap:4px;line-height:0;cursor:pointer;}
-.cat-logo img{height:32px;width:auto;display:block;}
+.cat-logo img{height:40px;width:auto;display:block;}
 @keyframes logoSpin{from{transform:rotate(0deg);}to{transform:rotate(1080deg);}}
 .cat-app-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border:1px solid #ddd;min-width:230px;box-shadow:0 4px 20px rgba(0,0,0,.16);z-index:300;}
 .cat-app-menu.open{display:block;}
@@ -26,7 +26,7 @@ a{color:inherit;text-decoration:none;}
 .cat-app-menu a:last-child{border-bottom:none;}
 .cat-app-menu a:hover{background:#f5f5f5;}
 .cat-app-menu a.cat-app-home{font-weight:600;color:#111;}
-.store-btn{background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;gap:5px;font-size:12px;font-family:inherit;padding:6px 10px;white-space:nowrap;border-radius:2px;transition:background .12s;}
+.store-btn{background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;gap:5px;font-size:14px;font-family:inherit;padding:6px 10px;white-space:nowrap;border-radius:2px;transition:background .12s;}
 .store-btn:hover{background:rgba(255,255,255,.09);}
 .search-area{width:100%;max-width:520px;display:flex;background:#fff;overflow:hidden;border-radius:22px;}
 .add-equip-btn{display:flex;align-items:center;gap:5px;background:var(--yellow);border:none;border-right:1px solid #D0D0D0;padding:0 12px;cursor:pointer;white-space:nowrap;flex-shrink:0;font-size:12px;color:#111;font-family:inherit;font-weight:500;height:36px;transition:background .12s;min-width:126px;}
@@ -37,7 +37,7 @@ a{color:inherit;text-decoration:none;}
 .search-area input::placeholder{color:#999;}
 .search-submit{width:42px;height:36px;background:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .search-submit:hover{background:#f5f5f5;}
-.hbtn{background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;gap:5px;font-size:12px;font-family:inherit;padding:8px 9px;white-space:nowrap;border-radius:2px;transition:background .12s;flex-shrink:0;}
+.hbtn{background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;gap:5px;font-size:14px;font-family:inherit;padding:8px 9px;white-space:nowrap;border-radius:2px;transition:background .12s;flex-shrink:0;}
 .hbtn:hover{background:rgba(255,255,255,.09);}
 .lang-wrap{position:relative;}
 .lang-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #ddd;box-shadow:0 4px 16px rgba(0,0,0,.15);z-index:300;width:480px;padding:14px;}
@@ -82,7 +82,7 @@ a{color:inherit;text-decoration:none;}
 .card-label{font-size:17px;font-weight:600;line-height:1.4;}
 @property --banner-angle{syntax:'<angle>';initial-value:0deg;inherits:false;}
 @keyframes spin-banner-border{to{--banner-angle:360deg;}}
-.banner-wrapper{background:conic-gradient(from var(--banner-angle) at 50% 50%,#1A1A1A 0%,#FFCD11 35%,#FFF3B0 50%,#FFCD11 65%,#1A1A1A 100%);padding:2px 0;animation:spin-banner-border 5s linear infinite;}
+.banner-wrapper{background:conic-gradient(from var(--banner-angle) at 50% 50%,#1A1A1A 0%,#FFCD11 35%,#FFF3B0 50%,#FFCD11 65%,#1A1A1A 100%);padding:2px 0;animation:spin-banner-border 2.5s linear infinite;display:flex;flex-direction:column;}
 .new-exp-banner{background:#1A1A1A;color:#fff;display:flex;align-items:center;justify-content:center;padding:10px 48px 10px 20px;font-size:13px;line-height:1.4;position:relative;}
 .new-exp-banner a{color:var(--yellow);text-decoration:underline;text-underline-offset:2px;white-space:nowrap;}
 .new-exp-banner a:hover{opacity:.85;}
@@ -95,7 +95,7 @@ a{color:inherit;text-decoration:none;}
 .footer-copy{font-size:11px;color:#333;font-weight:600;margin-bottom:8px;}
 .footer-legal{font-size:11px;color:#333;line-height:2;}
 .footer-legal .pipe{margin:0 5px;color:#666;}
-.ai-btn{position:fixed;bottom:26px;right:26px;width:54px;height:54px;border-radius:50%;background:#000;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.4);z-index:999;padding:10px;transition:transform .15s;}
+.ai-btn{position:fixed;bottom:26px;right:26px;width:54px;height:62px;border-radius:50%;background:#000;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.4);z-index:999;padding:10px;transition:transform .15s;}
 .ai-btn:hover{transform:scale(1.06);}
 .ai-icon{position:relative;width:100%;height:100%;}
 .ai-ring{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transform-origin:center center;will-change:transform;z-index:1;}
@@ -137,11 +137,11 @@ a{color:inherit;text-decoration:none;}
 <div class="hdr-center">
 <div class="search-area" role="search">
 <button class="add-equip-btn" id="addEquipBtn" type="button" aria-label="Add equipment">
-<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.6941 14.5245V9.75192C22.6941 9.44133 22.5131 9.16181 22.2417 9.03758L20.9049 8.44747V5.77646C20.9049 5.35199 20.5631 5 20.151 5H13.5874C13.2054 5 12.8838 5.28988 12.8436 5.68328L12.5018 8.61311H10.8936V7.4329C10.8936 7.22584 10.8132 7.02914 10.6724 6.87385L9.86833 6.06633C9.56678 5.7661 9.09436 5.7661 8.80287 6.06633C8.51138 6.37692 8.51138 6.8635 8.80287 7.16373L9.3758 7.74348V8.60276H8.21988C7.80777 8.60276 7.46602 8.95475 7.46602 9.37922V12.1538L6.95339 11.7189L4.44051 8.84087C4.24954 8.62347 3.95804 8.53029 3.6766 8.61311C3.39516 8.69594 3.19413 8.9237 3.14387 9.22393L2.02815 15.477L1.08331 17.3715C0.942589 17.6511 0.982795 17.9824 1.18382 18.2205C1.32455 18.3965 1.54568 18.5 1.75676 18.5C1.82712 18.5 1.90753 18.4896 1.97789 18.4689L5.9985 17.1852H7.30519C7.58664 17.9824 8.26009 18.5 9.04411 18.5H20.6435C21.5482 18.5 22.3322 17.9513 22.7443 17.0403C23.1062 16.2224 23.076 15.2906 22.7041 14.5245H22.6941ZM5.20443 15.8186L3.23433 16.4398L3.41526 16.0775C3.44541 16.0153 3.47557 15.9429 3.48562 15.86L4.34 11.0564L5.63664 12.5472L5.20443 15.8083V15.8186ZM8.97374 10.1764H13.1652C13.5472 10.1764 13.8688 9.8865 13.909 9.4931L14.2508 6.56327H19.3972V8.95475C19.3972 9.26534 19.5781 9.54486 19.8495 9.6691L21.1863 10.2592V12.5989L19.9198 11.0978C18.9448 9.93827 17.4371 9.61733 16.1606 10.2903L8.96369 14.1001V10.1867L8.97374 10.1764ZM6.9936 13.7895L7.43586 14.1622C7.43586 14.1622 7.45597 14.1622 7.45597 14.1725V15.1871C7.45597 15.1871 7.45597 15.2078 7.45597 15.2182C7.37555 15.3424 7.31525 15.4873 7.27504 15.6323H6.74231L6.98355 13.7791L6.9936 13.7895ZM21.4678 15.9739C21.4477 16.1292 21.4175 16.2742 21.3673 16.4087C21.2969 16.5744 21.0758 16.9678 20.6435 16.9678H9.04411C8.81292 16.9678 8.72246 16.6986 8.6923 16.5847C8.64204 16.388 8.6722 16.1396 8.80287 15.9843C8.84308 15.9429 8.87323 15.9015 8.92349 15.8704L11.6474 14.4314L16.8441 11.6775C17.0652 11.5636 17.3064 11.5015 17.5376 11.5015C17.9899 11.5015 18.4322 11.7192 18.774 12.1227L20.7139 14.4314L21.1964 15.0008C21.4376 15.2906 21.4979 15.653 21.4678 15.9843V15.9739Z"/></svg>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.6941 14.5245V9.75192C22.6941 9.44133 22.5131 9.16181 22.2417 9.03758L20.9049 8.44747V5.77646C20.9049 5.35199 20.5631 5 20.151 5H13.5874C13.2054 5 12.8838 5.28988 12.8436 5.68328L12.5018 8.61311H10.8936V7.4329C10.8936 7.22584 10.8132 7.02914 10.6724 6.87385L9.86833 6.06633C9.56678 5.7661 9.09436 5.7661 8.80287 6.06633C8.51138 6.37692 8.51138 6.8635 8.80287 7.16373L9.3758 7.74348V8.60276H8.21988C7.80777 8.60276 7.46602 8.95475 7.46602 9.37922V12.1538L6.95339 11.7189L4.44051 8.84087C4.24954 8.62347 3.95804 8.53029 3.6766 8.61311C3.39516 8.69594 3.19413 8.9237 3.14387 9.22393L2.02815 15.477L1.08331 17.3715C0.942589 17.6511 0.982795 17.9824 1.18382 18.2205C1.32455 18.3965 1.54568 18.5 1.75676 18.5C1.82712 18.5 1.90753 18.4896 1.97789 18.4689L5.9985 17.1852H7.30519C7.58664 17.9824 8.26009 18.5 9.04411 18.5H20.6435C21.5482 18.5 22.3322 17.9513 22.7443 17.0403C23.1062 16.2224 23.076 15.2906 22.7041 14.5245H22.6941ZM5.20443 15.8186L3.23433 16.4398L3.41526 16.0775C3.44541 16.0153 3.47557 15.9429 3.48562 15.86L4.34 11.0564L5.63664 12.5472L5.20443 15.8083V15.8186ZM8.97374 10.1764H13.1652C13.5472 10.1764 13.8688 9.8865 13.909 9.4931L14.2508 6.56327H19.3972V8.95475C19.3972 9.26534 19.5781 9.54486 19.8495 9.6691L21.1863 10.2592V12.5989L19.9198 11.0978C18.9448 9.93827 17.4371 9.61733 16.1606 10.2903L8.96369 14.1001V10.1867L8.97374 10.1764ZM6.9936 13.7895L7.43586 14.1622C7.43586 14.1622 7.45597 14.1622 7.45597 14.1725V15.1871C7.45597 15.1871 7.45597 15.2078 7.45597 15.2182C7.37555 15.3424 7.31525 15.4873 7.27504 15.6323H6.74231L6.98355 13.7791L6.9936 13.7895ZM21.4678 15.9739C21.4477 16.1292 21.4175 16.2742 21.3673 16.4087C21.2969 16.5744 21.0758 16.9678 20.6435 16.9678H9.04411C8.81292 16.9678 8.72246 16.6986 8.6923 16.5847C8.64204 16.388 8.6722 16.1396 8.80287 15.9843C8.84308 15.9429 8.87323 15.9015 8.92349 15.8704L11.6474 14.4314L16.8441 11.6775C17.0652 11.5636 17.3064 11.5015 17.5376 11.5015C17.9899 11.5015 18.4322 11.7192 18.774 12.1227L20.7139 14.4314L21.1964 15.0008C21.4376 15.2906 21.4979 15.653 21.4678 15.9843V15.9739Z"/></svg>
 <span>Add Equipment</span>
 </button>
 <button class="equip-context-btn" id="equipContextBtn" type="button" aria-label="Equipment: 320 Excavator">
-<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.6941 14.5245V9.75192C22.6941 9.44133 22.5131 9.16181 22.2417 9.03758L20.9049 8.44747V5.77646C20.9049 5.35199 20.5631 5 20.151 5H13.5874C13.2054 5 12.8838 5.28988 12.8436 5.68328L12.5018 8.61311H10.8936V7.4329C10.8936 7.22584 10.8132 7.02914 10.6724 6.87385L9.86833 6.06633C9.56678 5.7661 9.09436 5.7661 8.80287 6.06633C8.51138 6.37692 8.51138 6.8635 8.80287 7.16373L9.3758 7.74348V8.60276H8.21988C7.80777 8.60276 7.46602 8.95475 7.46602 9.37922V12.1538L6.95339 11.7189L4.44051 8.84087C4.24954 8.62347 3.95804 8.53029 3.6766 8.61311C3.39516 8.69594 3.19413 8.9237 3.14387 9.22393L2.02815 15.477L1.08331 17.3715C0.942589 17.6511 0.982795 17.9824 1.18382 18.2205C1.32455 18.3965 1.54568 18.5 1.75676 18.5C1.82712 18.5 1.90753 18.4896 1.97789 18.4689L5.9985 17.1852H7.30519C7.58664 17.9824 8.26009 18.5 9.04411 18.5H20.6435C21.5482 18.5 22.3322 17.9513 22.7443 17.0403C23.1062 16.2224 23.076 15.2906 22.7041 14.5245H22.6941ZM5.20443 15.8186L3.23433 16.4398L3.41526 16.0775C3.44541 16.0153 3.47557 15.9429 3.48562 15.86L4.34 11.0564L5.63664 12.5472L5.20443 15.8083V15.8186ZM8.97374 10.1764H13.1652C13.5472 10.1764 13.8688 9.8865 13.909 9.4931L14.2508 6.56327H19.3972V8.95475C19.3972 9.26534 19.5781 9.54486 19.8495 9.6691L21.1863 10.2592V12.5989L19.9198 11.0978C18.9448 9.93827 17.4371 9.61733 16.1606 10.2903L8.96369 14.1001V10.1867L8.97374 10.1764ZM6.9936 13.7895L7.43586 14.1622C7.43586 14.1622 7.45597 14.1622 7.45597 14.1725V15.1871C7.45597 15.1871 7.45597 15.2078 7.45597 15.2182C7.37555 15.3424 7.31525 15.4873 7.27504 15.6323H6.74231L6.98355 13.7791L6.9936 13.7895ZM21.4678 15.9739C21.4477 16.1292 21.4175 16.2742 21.3673 16.4087C21.2969 16.5744 21.0758 16.9678 20.6435 16.9678H9.04411C8.81292 16.9678 8.72246 16.6986 8.6923 16.5847C8.64204 16.388 8.6722 16.1396 8.80287 15.9843C8.84308 15.9429 8.87323 15.9015 8.92349 15.8704L11.6474 14.4314L16.8441 11.6775C17.0652 11.5636 17.3064 11.5015 17.5376 11.5015C17.9899 11.5015 18.4322 11.7192 18.774 12.1227L20.7139 14.4314L21.1964 15.0008C21.4376 15.2906 21.4979 15.653 21.4678 15.9843V15.9739Z"/></svg>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.6941 14.5245V9.75192C22.6941 9.44133 22.5131 9.16181 22.2417 9.03758L20.9049 8.44747V5.77646C20.9049 5.35199 20.5631 5 20.151 5H13.5874C13.2054 5 12.8838 5.28988 12.8436 5.68328L12.5018 8.61311H10.8936V7.4329C10.8936 7.22584 10.8132 7.02914 10.6724 6.87385L9.86833 6.06633C9.56678 5.7661 9.09436 5.7661 8.80287 6.06633C8.51138 6.37692 8.51138 6.8635 8.80287 7.16373L9.3758 7.74348V8.60276H8.21988C7.80777 8.60276 7.46602 8.95475 7.46602 9.37922V12.1538L6.95339 11.7189L4.44051 8.84087C4.24954 8.62347 3.95804 8.53029 3.6766 8.61311C3.39516 8.69594 3.19413 8.9237 3.14387 9.22393L2.02815 15.477L1.08331 17.3715C0.942589 17.6511 0.982795 17.9824 1.18382 18.2205C1.32455 18.3965 1.54568 18.5 1.75676 18.5C1.82712 18.5 1.90753 18.4896 1.97789 18.4689L5.9985 17.1852H7.30519C7.58664 17.9824 8.26009 18.5 9.04411 18.5H20.6435C21.5482 18.5 22.3322 17.9513 22.7443 17.0403C23.1062 16.2224 23.076 15.2906 22.7041 14.5245H22.6941ZM5.20443 15.8186L3.23433 16.4398L3.41526 16.0775C3.44541 16.0153 3.47557 15.9429 3.48562 15.86L4.34 11.0564L5.63664 12.5472L5.20443 15.8083V15.8186ZM8.97374 10.1764H13.1652C13.5472 10.1764 13.8688 9.8865 13.909 9.4931L14.2508 6.56327H19.3972V8.95475C19.3972 9.26534 19.5781 9.54486 19.8495 9.6691L21.1863 10.2592V12.5989L19.9198 11.0978C18.9448 9.93827 17.4371 9.61733 16.1606 10.2903L8.96369 14.1001V10.1867L8.97374 10.1764ZM6.9936 13.7895L7.43586 14.1622C7.43586 14.1622 7.45597 14.1622 7.45597 14.1725V15.1871C7.45597 15.1871 7.45597 15.2078 7.45597 15.2182C7.37555 15.3424 7.31525 15.4873 7.27504 15.6323H6.74231L6.98355 13.7791L6.9936 13.7895ZM21.4678 15.9739C21.4477 16.1292 21.4175 16.2742 21.3673 16.4087C21.2969 16.5744 21.0758 16.9678 20.6435 16.9678H9.04411C8.81292 16.9678 8.72246 16.6986 8.6923 16.5847C8.64204 16.388 8.6722 16.1396 8.80287 15.9843C8.84308 15.9429 8.87323 15.9015 8.92349 15.8704L11.6474 14.4314L16.8441 11.6775C17.0652 11.5636 17.3064 11.5015 17.5376 11.5015C17.9899 11.5015 18.4322 11.7192 18.774 12.1227L20.7139 14.4314L21.1964 15.0008C21.4376 15.2906 21.4979 15.653 21.4678 15.9843V15.9739Z"/></svg>
 <span id="hdrEquipNum">320</span>
 </button>
 <input type="search" placeholder="Search for part number or name" aria-label="Search parts">
@@ -189,7 +189,7 @@ a{color:inherit;text-decoration:none;}
 </div>
 <div class="cart-btn-wrap">
 <button class="hbtn" id="cartBtn" type="button" aria-label="Cart">
-<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
 </button>
 <span class="cart-badge" id="cartBadge"></span>
 </div>
@@ -235,7 +235,7 @@ You&#8217;re navigating a redesigned experience.&nbsp;
 <div class="card-img"><img src="imgs/drivetrain.webp" alt="" width="110" height="110"></div>
 <div class="card-body" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;">
 <span class="card-label">Drivetrain</span>
-<span style="font-size:11px;color:#555;font-weight:400;">&#x25BA; Select to advance prototype</span>
+<span style="font-size:10px;font-weight:600;color:#7a5c00;background:#FFF3B0;padding:3px 10px;border-radius:20px;display:inline-block;letter-spacing:.01em;">&#x25BA; Select to advance prototype</span>
 </div>
 </a>
 
@@ -305,11 +305,11 @@ You&#8217;re navigating a redesigned experience.&nbsp;
 
 <footer class="site-footer">
 <div class="social-row" aria-label="Social media">
-<a href="#" class="soc-icon" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+<a href="#" class="soc-icon" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
 <a href="#" class="soc-icon" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-<a href="#" class="soc-icon" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+<a href="#" class="soc-icon" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
 <a href="#" class="soc-icon" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FFCD11"/></svg></a>
-<a href="#" class="soc-icon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
+<a href="#" class="soc-icon" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
 </div>
 <p class="footer-copy">&copy; 2026 Caterpillar. All Rights Reserved.</p>
 <p class="footer-legal">About Cat<span class="pipe">|</span>Site Map<span class="pipe">|</span>Cookie Settings<span class="pipe">|</span>Do Not Sell or Share My Personal Information<span class="pipe">|</span>Legal Terms<span class="pipe">|</span>Privacy</p>
