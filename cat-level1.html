@@ -80,6 +80,9 @@ a{color:inherit;text-decoration:none;}
 .card-img img{width:110px;height:110px;object-fit:contain;mix-blend-mode:multiply;}
 .card-body{flex:1;padding:0 18px;display:flex;align-items:center;}
 .card-label{font-size:17px;font-weight:600;line-height:1.4;}
+@property --banner-angle{syntax:'<angle>';initial-value:0deg;inherits:false;}
+@keyframes spin-banner-border{to{--banner-angle:360deg;}}
+.banner-wrapper{background:conic-gradient(from var(--banner-angle) at 50% 50%,#1A1A1A 0%,#FFCD11 35%,#FFF3B0 50%,#FFCD11 65%,#1A1A1A 100%);padding:2px 0;animation:spin-banner-border 5s linear infinite;}
 .new-exp-banner{background:#1A1A1A;color:#fff;display:flex;align-items:center;justify-content:center;padding:10px 48px 10px 20px;font-size:13px;line-height:1.4;position:relative;}
 .new-exp-banner a{color:var(--yellow);text-decoration:underline;text-underline-offset:2px;white-space:nowrap;}
 .new-exp-banner a:hover{opacity:.85;}
@@ -204,10 +207,12 @@ a{color:inherit;text-decoration:none;}
 </div>
 </div>
 
+<div class="banner-wrapper" id="bannerWrapper">
 <div class="new-exp-banner" id="newExpBanner">
 You&#8217;re navigating a redesigned experience.&nbsp;
 <a href="#">Return to the legacy website</a>
-<button class="banner-close" type="button" aria-label="Dismiss" onclick="this.parentElement.hidden=true;">&#215;</button>
+<button class="banner-close" type="button" aria-label="Dismiss" onclick="document.getElementById('bannerWrapper').hidden=true;">&#215;</button>
+</div>
 </div>
 
 <main style="flex:1;">

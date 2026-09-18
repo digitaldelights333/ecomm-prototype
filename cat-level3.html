@@ -92,12 +92,18 @@ a{color:inherit;text-decoration:none;}
 .pdp-attr-list li{font-size:13px;color:#333;padding:2px 0 2px 12px;position:relative;line-height:1.5;}
 .pdp-attr-list li::before{content:"•";position:absolute;left:0;color:#555;}
 .pdp-warning{background:#FFF8E1;border:1px solid #FFE082;border-radius:6px;padding:10px 12px;font-size:11px;color:#5D4037;line-height:1.55;margin-top:12px;}
-.pdp-spec-row{display:flex;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid #F5F5F5;}
+.pdp-spec-row{display:flex;gap:4px;font-size:13px;padding:4px 0;}
 .pdp-spec-label{font-weight:700;flex-shrink:0;min-width:100px;}
 .pdp-spec-value{color:#333;}
-.pdp-compat-group{margin-bottom:10px;}
-.pdp-compat-cat{font-size:13px;font-weight:700;color:#111;margin-bottom:3px;}
-.pdp-compat-models{font-size:12px;color:var(--muted);}
+details.pdp-collapsible{margin:0;}
+details.pdp-collapsible>summary{font-size:16px;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;padding:12px 0 6px;border-top:1px solid var(--border);}
+details.pdp-collapsible>summary::-webkit-details-marker{display:none;}
+details.pdp-collapsible>summary::after{content:"▾";font-size:16px;line-height:1;transition:transform .2s;display:inline-block;}
+details.pdp-collapsible[open]>summary::after{transform:rotate(-180deg);}
+details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
+.pdp-compat-group{margin-bottom:6px;}.pdp-compat-group:last-child{margin-bottom:0;}
+.pdp-compat-cat{font-size:13px;font-weight:700;color:#111;margin:0 0 3px;}
+.pdp-compat-models{font-size:12px;color:var(--muted);margin:0;}
 .pdp-cta{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:14px;}
 .check-price-btn{background:var(--yellow);border:none;padding:10px 28px;border-radius:22px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .12s;}
 .check-price-btn:hover{background:#e6b800;}
@@ -321,13 +327,19 @@ a{color:inherit;text-decoration:none;}
 </ul>
 <p class="pdp-body-text"><strong>Applications:</strong> A Swing Gear bearing enables the machinery to rotate horizontally or swing from side to side, providing important mobility and maneuverability.</p>
 <div class="pdp-warning"><strong>&#9888; WARNING:</strong> This product can expose you to chemicals including Carbon black (airborne, unbound particles of respirable size), which is known to the State of California to cause cancer. For more information go to <a href="#" style="color:#5D4037;">www.P65Warnings.ca.gov</a>.</div>
-<hr class="pdp-divider">
-<div class="pdp-section-title">Specifications</div>
+<details class="pdp-collapsible">
+<summary>Specifications</summary>
+<div class="pdp-collapsible-body">
 <p class="pdp-spec-row"><strong>Material:</strong> Grease (Lanolin, Silicone) Fluid</p>
-<hr class="pdp-divider">
-<div class="pdp-section-title">Compatible Models</div>
+</div>
+</details>
+<details class="pdp-collapsible">
+<summary>Compatible Models</summary>
+<div class="pdp-collapsible-body">
 <div class="pdp-compat-group"><p class="pdp-compat-cat">Forestry Products</p><p class="pdp-compat-models">FM528, FM528 LL</p></div>
 <div class="pdp-compat-group"><p class="pdp-compat-cat">Excavator</p><p class="pdp-compat-models">320, 320D L, 320D, 323 GC, 323GC, 323</p></div>
+</div>
+</details>
 <hr class="pdp-divider">
 <div class="pdp-cta">
 <button class="check-price-btn" type="button" onclick="openQtyModal('Swing Gear Bearing','567-4399','imgs/prod_567-4399.webp',true);">Check Price</button>

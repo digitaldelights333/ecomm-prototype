@@ -128,7 +128,7 @@ a{color:inherit;text-decoration:none;}
 .add-cart-btn{width:100%;background:var(--yellow);border:none;padding:8px;border-radius:22px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:background .12s;}
 .add-cart-btn:hover{background:#e6b800;}
 .proto-card{cursor:pointer;}
-.advance-hint{font-size:10px;color:#888;font-weight:500;text-align:center;padding:3px 0 0;letter-spacing:.02em;}
+.advance-hint{font-size:10px;color:#888;font-weight:500;text-align:left;padding:3px 0 0;letter-spacing:.02em;}
 .pagination{display:flex;align-items:center;justify-content:center;gap:14px;padding:28px 0 8px;margin-top:12px;}
 .pg-btn{padding:8px 20px;border:1px solid var(--border);border-radius:22px;background:#fff;font-size:13px;font-family:inherit;cursor:pointer;color:var(--text);transition:background .12s,border-color .12s;}
 .pg-btn:hover:not(:disabled){background:#f0f0f0;border-color:#bbb;}
@@ -136,22 +136,24 @@ a{color:inherit;text-decoration:none;}
 .pg-info{font-size:13px;color:var(--muted);}
 .qty-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:center;justify-content:center;}
 .qty-modal-overlay.open{display:flex;}
-.qty-modal{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;min-width:260px;max-width:340px;width:90vw;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.25);overflow:hidden;}
-.qty-modal-img-area{width:100%;height:150px;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);}
-.qty-modal-img-area img{width:110px;height:110px;object-fit:contain;}
-.qty-modal-body{padding:12px 14px 14px;}
-.qty-modal-close{position:absolute;top:8px;right:10px;background:rgba(255,255,255,.85);border:none;cursor:pointer;font-size:18px;color:#555;padding:1px 6px;line-height:1;font-family:inherit;border-radius:4px;z-index:2;}
-.qty-modal-num{font-family:"Roboto Mono",monospace;font-size:11px;font-weight:500;color:#555;display:block;margin-bottom:3px;}
-.qty-modal-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:12px;}
-.qty-input-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.qty-modal{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;width:min(560px,92vw);position:relative;box-shadow:0 8px 40px rgba(0,0,0,.25);overflow:hidden;display:flex;}
+.qty-modal-img-col{width:200px;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;padding:28px;border-right:1px solid var(--border);}
+.qty-modal-img-col img{width:140px;height:140px;object-fit:contain;}
+.qty-modal-body{flex:1;padding:22px 20px 20px;}
+.qty-modal-close{position:absolute;top:10px;right:12px;background:none;border:none;cursor:pointer;font-size:20px;color:#777;padding:2px 6px;line-height:1;font-family:inherit;border-radius:4px;z-index:2;}
+.qty-modal-close:hover{color:#111;}
+.qty-modal-num{font-family:"Roboto Mono",monospace;font-size:11px;font-weight:500;color:#555;display:block;margin-bottom:4px;}
+.qty-modal-name{font-size:15px;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:6px;}
+.qty-modal-spec{margin-bottom:14px;}
+.qty-modal-spec .fit-badge{font-size:12px;}
+.qty-input-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
 .qty-input-row label{font-size:13px;font-weight:600;flex-shrink:0;}
 .qty-input{width:72px;padding:7px 10px;border:1px solid #D0D0D0;border-radius:6px;font-size:14px;font-family:inherit;text-align:center;font-weight:600;background:#fff;color:#111;outline:none;}
 .qty-input:focus{border-color:var(--yellow);box-shadow:0 0 0 2px rgba(255,205,17,.2);}
-.qty-modal-actions{display:flex;gap:10px;}
-.qty-cancel-btn{flex:1;background:#fff;border:1px solid #CCC;padding:9px;border-radius:22px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;color:var(--muted);}
-.qty-cancel-btn:hover{border-color:#999;color:#333;}
-.qty-confirm-btn{flex:2;background:var(--yellow);border:none;padding:9px;border-radius:22px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;}
+.qty-confirm-btn{width:100%;background:var(--yellow);border:none;padding:11px;border-radius:22px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;margin-bottom:10px;}
 .qty-confirm-btn:hover{background:#e6b800;}
+.qty-pdp-link{display:none;font-size:12px;color:#1a6bc4;text-decoration:underline;margin-bottom:10px;}
+.qty-pdp-link:hover{color:#0f4a8a;}
 .site-footer{background:var(--yellow);padding:26px 16px 16px;text-align:center;}
 .social-row{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:10px;}
 .soc-icon{width:34px;height:34px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;color:var(--yellow);text-decoration:none;flex-shrink:0;transition:opacity .13s;}
@@ -655,15 +657,14 @@ My Equipment
 <div class="qty-modal-overlay" id="qtyModal">
 <div class="qty-modal">
 <button class="qty-modal-close" id="qtyModalClose" type="button">&#215;</button>
-<div class="qty-modal-img-area"><img id="qtyModalImg" src="" alt="" width="110" height="110"></div>
+<div class="qty-modal-img-col"><img id="qtyModalImg" src="" alt="" width="140" height="140"></div>
 <div class="qty-modal-body">
 <span class="qty-modal-num" id="qtyModalNum"></span>
 <p class="qty-modal-name" id="qtyModalName"></p>
+<div class="qty-modal-spec" id="qtyModalSpec"></div>
 <div class="qty-input-row"><label for="qtyInput">Qty:</label><input class="qty-input" id="qtyInput" type="number" min="1" value="1"></div>
-<div class="qty-modal-actions">
-<button class="qty-cancel-btn" id="qtyCancelBtn" type="button">Cancel</button>
+<a class="qty-pdp-link" id="qtyPdpLink" href="cat-level3.html">View Product Diagrams &#8250;</a>
 <button class="qty-confirm-btn" id="qtyConfirmBtn" type="button">Add to Cart</button>
-</div>
 </div>
 </div>
 </div>
@@ -793,12 +794,16 @@ function openQtyModal(name, num, imgSrc, isReal) {
   img.src = imgSrc;
   img.style.mixBlendMode = isReal ? 'multiply' : 'normal';
   document.getElementById('qtyInput').value = 1;
+  var specEl = document.getElementById('qtyModalSpec');
+  if (isReal) {
+    specEl.innerHTML = '<span class="fit-badge fits"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2E7D32"/><polyline points="20 6 9 17 4 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Factory Fit 320 ZBN60173</span>';
+  } else {
+    specEl.innerHTML = '<span style="font-size:12px;color:var(--muted);">Fit not verified for your equipment</span>';
+  }
+  document.getElementById('qtyPdpLink').style.display = num === '567-4399' ? 'block' : 'none';
   modal.classList.add('open');
 }
 document.getElementById('qtyModalClose').addEventListener('click', function() {
-  document.getElementById('qtyModal').classList.remove('open');
-});
-document.getElementById('qtyCancelBtn').addEventListener('click', function() {
   document.getElementById('qtyModal').classList.remove('open');
 });
 document.getElementById('qtyConfirmBtn').addEventListener('click', function() {
