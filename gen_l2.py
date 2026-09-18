@@ -75,8 +75,8 @@ PRODUCTS = [
     ("p15","303-2504","Joint Group-Slip","Cat® Joint Group-Slip for drivetrain assemblies requiring a precision slip joint connection.","fits"),
     ("p16","163-9366","2.413mm Thick Outer Plate","Cat® 2.413mm Thick Outer Plate for Service and Parking Brake. Carbon steel construction for durability.","fits"),
     ("p17","363-1924","Joint Group-Slip","Cat® Slip Joint Group (15.5C) for smooth drivetrain power transmission.","fits"),
-    # --- Factory fit + no image (default CAT logo) ---
-    ("p14","8W-0212","2.413mm Thick Outer Plate","Cat® 2.413mm Thick Outer Plate for Service and Parking Brake.","fits"),
+    # --- Factory fit + no image (default CAT logo from real site) ---
+    ("p14","569-4288","90 Internal Teeth Ring Gear","Cat® Ring Gear, 90 Teeth.","fits"),
     # --- Not factory fit + real image ---
     ("p09","384-4562","Bearing Assembly","Find premium bearing assembly and more with Cat. Reliable heavy-duty components for your needs.","unverified"),
     ("p11","290-4140","190.27mm Transmission Steel Planet Gear","Cat® Planet Gear (Final Drive).","unverified"),
@@ -84,8 +84,8 @@ PRODUCTS = [
     ("p18","563-8599","Duo Seal Group","Shop Cat® duo cone seal group to protect against particle intrusion for machines compatible with 563-8599.","unverified"),
     ("p19","118-6606","170mm ID Fan Type Outer Plate","Shop Cat® final drive plate brake parts for machines compatible with Cat part 118-6606.","unverified"),
     ("p20","179-0745","Final Drive Spindle","Cat® Final Drive Spindle is responsible for transmitting power from the differential to the wheels.","unverified"),
-    # --- Not factory fit + no image ---
-    ("p02","8X-9620","295mm Long Ball Stud","Shop Cat® 295mm long ball stud used in steering cylinder rod end mounting and steering tie rod linkage for machines compatible with 8X-9620.","unverified"),
+    # --- Not factory fit + no image (default CAT logo from real site) ---
+    ("p02","584-2564","Right Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the track drive sprocket.","unverified"),
 ]
 
 INFO_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
