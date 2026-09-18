@@ -98,8 +98,8 @@ a{color:inherit;text-decoration:none;}
 details.pdp-collapsible{margin:0;}
 details.pdp-collapsible>summary{font-size:16px;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;padding:12px 0 6px;border-top:1px solid var(--border);}
 details.pdp-collapsible>summary::-webkit-details-marker{display:none;}
-details.pdp-collapsible>summary::after{content:"▾";font-size:16px;line-height:1;transition:transform .2s;display:inline-block;}
-details.pdp-collapsible[open]>summary::after{transform:rotate(-180deg);}
+details.pdp-collapsible>summary::after{content:"+";font-size:18px;line-height:1;display:inline-block;font-weight:300;}
+details.pdp-collapsible[open]>summary::after{content:"−";}
 details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
 .pdp-compat-group{margin-bottom:6px;}.pdp-compat-group:last-child{margin-bottom:0;}
 .pdp-compat-cat{font-size:13px;font-weight:700;color:#111;margin:0 0 3px;}
