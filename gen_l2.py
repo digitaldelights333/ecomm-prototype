@@ -124,26 +124,29 @@ SPECS = [
 # fit = "fits" (green badge) or "unverified" (no badge)
 # has_img = True for real product photo, False for CAT logo placeholder
 PRODUCTS = [
+    # --- Factory Fit + real product image ---
     ("567-4399","Swing Gear Bearing","Cat® Swing Gear Bearing","fits",True),
-    ("148-4636","34, 14 External Teeth Pinion Shaft","Cat® Pinion Shaft for transmitting power from the swing motor to the swing gear","unverified",True),
-    ("567-7173","Single Row Tapered Roller Bearing","Cat® Single Row Tapered Roller Bearing, ID X OD X W: 254 X 315.9 X 34mm","fits",False),
     ("122-9608","Right Hand Side Rubber Pedal","Cat® Right Hand Side Pilot Control Valve Rubber Pedal offers durability in demanding environments","fits",True),
     ("4B-9880","7.938mm Outer Diameter Check Ball","Cat® Check Ball for governor cutoff valve preventing backflow and contamination","fits",True),
+    ("3D-2891","12.7mm Spherical Diameter Steel Ball","Cat® Ball Bearing (Loose ball only)","fits",True),
+    ("593-5616","Planetary Gear","Cat® Planetary Gear","fits",True),
+    ("517-4512","Control Group-Electronic","Electronic Control Group (A6N1 Yellow Key)","fits",True),
+    # --- No Factory Fit + real product image ---
+    ("148-4636","34, 14 External Teeth Pinion Shaft","Cat® Pinion Shaft for transmitting power from the swing motor to the swing gear","unverified",True),
     ("174-4874","333.12mm Outside Diameter Duo Cone Seal","Cat® Duo Cone Seal","unverified",True),
     ("561-7005","Control Group-Pedal","Cat® Control Group-Pedal","unverified",True),
     ("296-6220","240mm Internal Diameter Ball Bearing","Cat® 310mm Outer Diameter Ball Bearing Used for Final Drive","unverified",True),
     ("2D-6642","6.35mm Spherical Diameter Steel Ball","Cat® Ball (Check)","unverified",True),
-    ("584-2564","Right Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the undercarriage","unverified",False),
     ("523-0574","533.5mm Outer Diameter Final Drive","Cat® General Duty Small Excavator Final Drive","unverified",True),
-    ("3D-2891","12.7mm Spherical Diameter Steel Ball","Cat® Ball Bearing (Loose ball only)","fits",True),
-    ("584-2563","Left Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the undercarriage","unverified",False),
     ("333-2998","533mm Outer Diameter Sprocket Housing","Cat® 533mm Outer Diameter Sprocket Ductile Iron Housing for Final Drive","unverified",True),
+    ("378-9517","Drive Group-Swing","Cat® Swing Drive Group (Without Motor)","unverified",True),
+    # --- CAT logo placeholder (no real product photo) ---
+    ("567-7173","Single Row Tapered Roller Bearing","Cat® Single Row Tapered Roller Bearing, ID X OD X W: 254 X 315.9 X 34mm","fits",False),
     ("569-4288","90 Internal Teeth Ring Gear","Cat® Ring Gear, 90 Teeth","fits",False),
-    ("593-5616","Planetary Gear","Cat® Planetary Gear","fits",True),
-    ("517-4512","Control Group-Electronic","Electronic Control Group (A6N1 Yellow Key)","fits",True),
     ("569-4292","351.8mm Outer Diameter Duo Cone Seal","Cat® Duo Cone Seal (320), Steel and Rubber, Inside Diameter: 319mm","fits",False),
     ("569-4287","35 Tooth Planetary Gear","Planet Gear","fits",False),
-    ("378-9517","Drive Group-Swing","Cat® Swing Drive Group (Without Motor)","unverified",True),
+    ("584-2564","Right Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the undercarriage","unverified",False),
+    ("584-2563","Left Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the undercarriage","unverified",False),
 ]
 
 INFO_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
@@ -311,12 +314,13 @@ a{color:inherit;text-decoration:none;}
 .unit-btn.active{background:#fff;color:#111;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12);}
 /* Spec filter labels */
 .spec-filter-label{padding:9px 0;font-size:13px;border-bottom:1px solid var(--border);color:var(--text);}
-/* Equipment context button in search bar (L2/L3) */
-.equip-context-btn{display:flex;align-items:center;gap:6px;background:var(--yellow);border:none;border-right:1px solid #D0D0D0;padding:0 14px;cursor:pointer;white-space:nowrap;flex-shrink:0;font-size:13px;font-weight:700;color:#111;font-family:inherit;height:36px;transition:background .12s;}
+/* Equipment context button in search bar (L2/L3) — fixed width matches L1 "Add Equipment" pill */
+.equip-context-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--yellow);border:none;border-right:1px solid #D0D0D0;padding:0 14px;cursor:pointer;white-space:nowrap;flex-shrink:0;font-size:13px;font-weight:700;color:#111;font-family:inherit;height:36px;transition:background .12s;min-width:126px;}
 .equip-context-btn:hover{background:#e6b800;}
 /* MAIN */
 .main-content{flex:1;min-width:0;}
-.sort-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-bottom:16px;}
+.sort-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-shrink:0;}
+.filter-sort-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
 .sort-label{font-size:13px;color:var(--muted);}
 .sort-select{font-size:13px;font-family:inherit;padding:5px 28px 5px 10px;border:1px solid var(--border);border-radius:4px;background:#fff;color:var(--text);cursor:default;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23666'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;}
 /* PRODUCT GRID — CSS Grid stretch gives uniform row heights */
@@ -392,7 +396,7 @@ a{color:inherit;text-decoration:none;}
 .fit-legend-item:first-child{padding-left:0;}
 .fit-legend-item:last-child{border-right:none;}
 /* TYPE FILTER CHIPS */
-.type-filter-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.type-filter-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 .type-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border:1px solid var(--border);border-radius:22px;font-size:12px;font-weight:500;font-family:inherit;background:#fff;color:var(--text);cursor:pointer;transition:background .12s,border-color .12s,color .12s;white-space:nowrap;}
 .type-chip:hover{border-color:#888;}
 .type-chip.active{background:#111;border-color:#111;color:#fff;}
@@ -407,7 +411,28 @@ a{color:inherit;text-decoration:none;}
 @keyframes ringHover{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 @media(prefers-reduced-motion:reduce){.ai-ring,.cat-logo img{animation:none!important;}}
 @media(max-width:900px){.sidebar{display:none;}.prod-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:600px){.prod-grid{grid-template-columns:1fr;}.lang-menu{width:280px;}}
+@media(max-width:600px){.prod-grid{grid-template-columns:1fr;}.lang-menu{width:280px;}.filter-sort-bar{flex-direction:column;align-items:flex-start;}}
+/* Cart quantity modal */
+.qty-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:center;justify-content:center;}
+.qty-modal-overlay.open{display:flex;}
+.qty-modal{background:#fff;border-radius:12px;padding:28px 24px 24px;min-width:300px;max-width:90vw;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.25);}
+.qty-modal-title{font-size:16px;font-weight:700;margin-bottom:6px;}
+.qty-modal-part{font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.4;}
+.qty-modal-close{position:absolute;top:10px;right:12px;background:none;border:none;cursor:pointer;font-size:20px;color:#bbb;padding:2px 6px;line-height:1;font-family:inherit;}
+.qty-modal-close:hover{color:#333;}
+.qty-input-row{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.qty-input-row label{font-size:13px;font-weight:600;flex-shrink:0;}
+.qty-input{width:72px;padding:7px 10px;border:1px solid #D0D0D0;border-radius:6px;font-size:14px;font-family:inherit;text-align:center;font-weight:600;outline:none;}
+.qty-input:focus{border-color:var(--yellow);box-shadow:0 0 0 2px rgba(255,205,17,.2);}
+.qty-modal-actions{display:flex;gap:10px;}
+.qty-cancel-btn{flex:1;background:none;border:1px solid #CCC;padding:9px;border-radius:22px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;color:var(--muted);transition:border-color .12s,color .12s;}
+.qty-cancel-btn:hover{border-color:#999;color:#333;}
+.qty-confirm-btn{flex:2;background:var(--yellow);border:none;padding:9px;border-radius:22px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .12s;}
+.qty-confirm-btn:hover{background:#e6b800;}
+/* Cart badge in header */
+.cart-btn-wrap{position:relative;display:inline-flex;}
+.cart-badge{background:var(--yellow);color:#111;border-radius:50%;width:16px;height:16px;font-size:9px;font-weight:700;display:none;align-items:center;justify-content:center;position:absolute;top:-2px;right:0;line-height:1;pointer-events:none;}
+.cart-badge.visible{display:flex;}
 </style>""")
 
 # HEADER — search bar includes equipment chip (320 Excavator, with "Change" link)
@@ -461,9 +486,12 @@ parts.append("""<header class="site-header">
           <a href="#" class="acct-signout" onclick="return false;">Sign Out</a>
         </div>
       </div>
-      <button class="hbtn" type="button" aria-label="Cart">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-      </button>
+      <div class="cart-btn-wrap">
+        <button class="hbtn" type="button" aria-label="Cart" id="cartBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+        <span class="cart-badge" id="cartBadge" aria-live="polite"></span>
+      </div>
     </div>
   </div>
 </header>""".replace("{logo}", LOGO).replace("{apps}", cat_app_html).replace("{langs}", lang_items).replace("{machine}", MACHINE_ICON))
@@ -473,6 +501,7 @@ parts.append('<div class="wrap">')
 # Breadcrumb — All Categories links back to Level 1
 parts.append('<nav class="breadcrumb" aria-label="Breadcrumb"><a href="https://claude.ai/artifact/JkHPcq3EZBPeG4jNBuitvd">Home</a><span>/</span><a href="https://claude.ai/artifact/JkHPcq3EZBPeG4jNBuitvd">All Categories</a><span>/</span><span aria-current="page">Drivetrain</span></nav>')
 parts.append('<div class="page-title"><h1>Drivetrain</h1></div>')
+parts.append(FIT_BANNER_HTML)
 parts.append('<div class="page-layout">')
 
 # SIDEBAR
@@ -506,17 +535,15 @@ parts.append("""<aside class="sidebar">
 </aside>""")
 
 parts.append('<div class="main-content">')
-parts.append("""<div class="sort-bar">
-  <span class="sort-label">Sort by</span>
-  <select class="sort-select" disabled aria-label="Sort by">
-    <option>Relevance</option>
-    <option>Name</option>
-    <option>Part Number</option>
-  </select>
-</div>""")
-
-parts.append(TYPE_CHIPS_HTML)
-parts.append(FIT_BANNER_HTML)
+parts.append(
+    '<div class="filter-sort-bar">'
+    + TYPE_CHIPS_HTML
+    + '<div class="sort-bar"><span class="sort-label">Sort by</span>'
+    + '<select class="sort-select" disabled aria-label="Sort by">'
+    + '<option>Relevance</option><option>Name</option><option>Part Number</option>'
+    + '</select></div>'
+    + '</div>'
+)
 parts.append('<div class="prod-grid">')
 
 # Equipment card — starts in CONFIRMED state (equipment pre-selected from URL params)
@@ -567,6 +594,22 @@ parts.append('</div>') # main-content
 parts.append('</div>') # page-layout
 parts.append('</div>') # wrap
 parts.append('</main>')
+
+parts.append("""<div class="qty-modal-overlay" id="qtyModal" role="dialog" aria-modal="true" aria-label="Add to Cart">
+  <div class="qty-modal">
+    <button class="qty-modal-close" id="qtyModalClose" type="button" aria-label="Close">&times;</button>
+    <div class="qty-modal-title">Add to Cart</div>
+    <div class="qty-modal-part" id="qtyModalPart"></div>
+    <div class="qty-input-row">
+      <label for="qtyInput">Quantity</label>
+      <input type="number" id="qtyInput" class="qty-input" value="1" min="1" max="999" aria-label="Quantity">
+    </div>
+    <div class="qty-modal-actions">
+      <button class="qty-cancel-btn" id="qtyCancelBtn" type="button">Cancel</button>
+      <button class="qty-confirm-btn" id="qtyConfirmBtn" type="button">Add to Cart</button>
+    </div>
+  </div>
+</div>""")
 
 parts.append("""<footer class="site-footer">
   <div class="social-row">
@@ -697,6 +740,42 @@ parts.append("""<script>
         if(model||serial)showConfirmed(model||serial,serial);
       }
     });
+  });
+
+  // Cart quantity modal
+  var cartCount=0;
+  var cartBadge=document.getElementById('cartBadge');
+  var qtyModal=document.getElementById('qtyModal');
+  var qtyModalPart=document.getElementById('qtyModalPart');
+  var qtyInputEl=document.getElementById('qtyInput');
+  function openQtyModal(partName){
+    if(qtyModalPart)qtyModalPart.textContent=partName;
+    if(qtyInputEl){qtyInputEl.value=1;setTimeout(function(){qtyInputEl.select();},50);}
+    if(qtyModal)qtyModal.classList.add('open');
+  }
+  function closeQtyModal(){if(qtyModal)qtyModal.classList.remove('open');}
+  var qtyClose=document.getElementById('qtyModalClose');
+  var qtyCancel=document.getElementById('qtyCancelBtn');
+  var qtyConfirm=document.getElementById('qtyConfirmBtn');
+  if(qtyClose)qtyClose.addEventListener('click',closeQtyModal);
+  if(qtyCancel)qtyCancel.addEventListener('click',closeQtyModal);
+  if(qtyModal)qtyModal.addEventListener('click',function(e){if(e.target===qtyModal)closeQtyModal();});
+  if(qtyConfirm)qtyConfirm.addEventListener('click',function(){
+    var qty=Math.max(1,parseInt(qtyInputEl&&qtyInputEl.value,10)||1);
+    cartCount+=qty;
+    if(cartBadge){cartBadge.textContent=cartCount>99?'99+':cartCount;cartBadge.classList.add('visible');}
+    closeQtyModal();
+  });
+  if(qtyInputEl)qtyInputEl.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){var b=document.getElementById('qtyConfirmBtn');if(b)b.click();}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeQtyModal();});
+  document.querySelectorAll('.add-cart-btn').forEach(function(btn){
+    var card=btn.closest('.prod-card');
+    var nm=card?(card.querySelector('.prod-name')||{textContent:''}).textContent.trim():'Part';
+    var pn=card?(card.querySelector('.prod-num')||{textContent:''}).textContent.trim():'';
+    btn.onclick=null;
+    btn.addEventListener('click',function(e){e.preventDefault();openQtyModal(nm+(pn?' — '+pn:''));});
   });
 })();
 
