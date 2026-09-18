@@ -107,12 +107,7 @@ def prod_card(img_key, num, name, desc, fit='fits'):
             '</div>'
         )
     else:
-        badge = (
-            '<div class="fit-badge unverified" data-fit="badge">'
-            '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
-            ' Verify fit'
-            '</div>'
-        )
+        badge = ''
     return (
         '<div class="prod-card">'
         '<div class="prod-img">'
@@ -373,7 +368,8 @@ def spec_filter_html(label, options):
             val_html = opt
         inner += '<div class="spec-option"><input type="checkbox" id="' + uid + '"><label for="' + uid + '">' + val_html + '</label></div>'
     inner += '</div>'
-    return '<details class="spec-filter" open><summary>' + label + '</summary>' + inner + '</details>'
+    open_attr = ' open' if label == 'Diameter' else ''
+    return '<details class="spec-filter"' + open_attr + '><summary>' + label + '</summary>' + inner + '</details>'
 
 spec_html = "\n".join(spec_filter_html(label, opts) for label, opts in SPECS)
 
