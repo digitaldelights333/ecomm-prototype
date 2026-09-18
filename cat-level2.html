@@ -82,7 +82,15 @@ a{color:inherit;text-decoration:none;}
 .type-chip.active{background:#111;border-color:#111;color:#fff;}
 .sort-bar{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .sort-label{font-size:13px;color:var(--muted);}
-.sort-select{font-size:13px;font-family:inherit;padding:5px 28px 5px 10px;border:1px solid var(--border);border-radius:4px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23666'/%3E%3C/svg%3E") no-repeat right 8px center;color:var(--text);cursor:default;-webkit-appearance:none;}
+.sort-wrap{position:relative;}
+.sort-btn{font-size:13px;font-family:inherit;padding:5px 10px;border:1px solid var(--border);border-radius:4px;background:#fff;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.sort-btn:hover{border-color:#999;}
+.sort-menu{display:none;position:absolute;top:calc(100% + 4px);right:0;background:#fff;border:1px solid #ddd;min-width:160px;box-shadow:0 4px 20px rgba(0,0,0,.16);z-index:200;}
+.sort-menu.open{display:block;}
+.sort-menu button{display:block;width:100%;text-align:left;padding:10px 14px;font-size:13px;font-family:inherit;color:#333;background:none;border:none;border-bottom:1px solid #f0f0f0;cursor:pointer;}
+.sort-menu button:last-child{border-bottom:none;}
+.sort-menu button:hover{background:#f5f5f5;}
+.sort-menu button.active{font-weight:700;color:#111;}
 .fit-banner-wrap{margin-bottom:16px;}
 .fit-banner-full{background:#fff;border:1px solid #e0e0e0;border-left:3px solid #2E7D32;border-radius:8px;padding:16px 20px 14px;display:flex;gap:24px;position:relative;}
 .fit-banner-left{flex:1;min-width:0;}
@@ -127,8 +135,8 @@ a{color:inherit;text-decoration:none;}
 .fit-badge.fits{color:#2E7D32;}
 .add-cart-btn{width:100%;background:var(--yellow);border:none;padding:8px;border-radius:22px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:background .12s;}
 .add-cart-btn:hover{background:#e6b800;}
-.proto-card{cursor:pointer;}
-.advance-hint{font-size:10px;color:#888;font-weight:500;text-align:left;padding:3px 0 0;letter-spacing:.02em;}
+.proto-card{cursor:pointer;}.proto-card:hover{border-color:var(--yellow);box-shadow:0 2px 10px rgba(255,205,17,.25);}
+.advance-hint{font-size:10px;font-weight:600;color:#7a5c00;background:#FFF3B0;padding:3px 10px;border-radius:20px;display:inline-block;letter-spacing:.01em;align-self:flex-start;}
 .pagination{display:flex;align-items:center;justify-content:center;gap:14px;padding:28px 0 8px;margin-top:12px;}
 .pg-btn{padding:8px 20px;border:1px solid var(--border);border-radius:22px;background:#fff;font-size:13px;font-family:inherit;cursor:pointer;color:var(--text);transition:background .12s,border-color .12s;}
 .pg-btn:hover:not(:disabled){background:#f0f0f0;border-color:#bbb;}
@@ -337,7 +345,14 @@ a{color:inherit;text-decoration:none;}
 </div>
 <div class="sort-bar">
 <span class="sort-label">Sort by:</span>
-<select class="sort-select" aria-label="Sort by"><option>Relevance</option><option>Name</option><option>Part Number</option></select>
+<div class="sort-wrap">
+<button class="sort-btn" id="sortBtn" type="button" aria-haspopup="listbox">Relevance <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M0 0l5 6 5-6z" fill="#666"/></svg></button>
+<div class="sort-menu" id="sortMenu" role="listbox">
+<button type="button" class="active" onclick="selectSort(this,'Relevance')">Relevance</button>
+<button type="button" onclick="selectSort(this,'Name')">Name</button>
+<button type="button" onclick="selectSort(this,'Part Number')">Part Number</button>
+</div>
+</div>
 </div>
 </div>
 
@@ -378,7 +393,7 @@ My Equipment
 <p class="prod-name">Swing Gear Bearing</p>
 <p class="prod-desc">Cat® Swing Gear Bearing</p>
 <div class="prod-bottom">
-<p class="advance-hint" style="text-align:left;">&#x25BA; Select to advance prototype</p>
+<p class="advance-hint">&#x25BA; Select to advance prototype</p>
 <div class="fit-badge fits" data-fit="badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2E7D32"/><polyline points="20 6 9 17 4 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Factory Fit 320 ZBN60173</div>
 <button class="add-cart-btn" type="button" onclick="openQtyModal('Swing Gear Bearing','567-4399','imgs/prod_567-4399.webp',true);event.stopPropagation();">Add to Cart</button>
 </div>
@@ -708,6 +723,13 @@ My Equipment
   dropdown('.cat-wrap', '.cat-app-menu');
   dropdown('.lang-wrap', '.lang-menu');
   dropdown('.acct-wrap', '.acct-menu');
+  dropdown('.sort-wrap', '.sort-menu');
+  function selectSort(btn, label) {
+    document.getElementById('sortBtn').childNodes[0].textContent = label + ' ';
+    document.querySelectorAll('.sort-menu button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById('sortMenu').classList.remove('open');
+  }
 })();
 
 (function(){
@@ -800,7 +822,7 @@ function openQtyModal(name, num, imgSrc, isReal) {
   } else {
     specEl.innerHTML = '<span style="font-size:12px;color:var(--muted);">Fit not verified for your equipment</span>';
   }
-  document.getElementById('qtyPdpLink').style.display = num === '567-4399' ? 'block' : 'none';
+  document.getElementById('qtyPdpLink').style.display = 'block';
   modal.classList.add('open');
 }
 document.getElementById('qtyModalClose').addEventListener('click', function() {

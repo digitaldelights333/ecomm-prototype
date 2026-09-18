@@ -124,6 +124,7 @@ details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
 .diagram-slide.active{display:flex;}
 .diagram-img-area{flex:1;display:flex;align-items:center;justify-content:center;padding:20px;border-right:1px solid var(--border);background:#FAFAFA;}
 .diagram-img-area svg{max-width:100%;max-height:360px;}
+.diagram-img-area img.diag-photo{max-width:100%;max-height:360px;object-fit:contain;}
 .diagram-parts-list{width:280px;flex-shrink:0;padding:16px;overflow-y:auto;max-height:400px;}
 .diagram-parts-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
 .diagram-part-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #F5F5F5;}
@@ -132,7 +133,8 @@ details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
 .dpr-thumb img{width:24px;height:24px;object-fit:contain;}
 .dpr-info{flex:1;min-width:0;}
 .dpr-partnum{font-family:"Roboto Mono",monospace;font-size:10px;font-weight:500;color:#555;display:block;}
-.dpr-partname{font-size:11px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.dpr-partname{font-size:11px;color:var(--text);white-space:normal;}
+.dpr-partlink{color:#1a6bc4;text-decoration:underline;cursor:pointer;}
 .diagram-indicator{display:flex;gap:8px;justify-content:center;padding-top:12px;}
 .diag-dot{width:8px;height:8px;border-radius:50%;background:#D0D0D0;border:none;cursor:pointer;padding:0;transition:background .12s;}
 .diag-dot.active{background:#111;}
@@ -357,47 +359,20 @@ details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
 
 <div class="diagram-slide active">
 <div class="diagram-img-area">
-<svg viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg" font-family="Arial,sans-serif">
-<rect width="480" height="380" fill="#fff"/>
-<circle cx="240" cy="200" r="148" fill="none" stroke="#3355cc" stroke-width="2.5"/>
-<circle cx="240" cy="200" r="130" fill="none" stroke="#3355cc" stroke-width="1.5" stroke-dasharray="4 3"/>
-<circle cx="240" cy="200" r="112" fill="none" stroke="#3355cc" stroke-width="2"/>
-<circle cx="240" cy="200" r="38" fill="none" stroke="#666" stroke-width="1"/>
-<circle cx="240" cy="200" r="22" fill="none" stroke="#666" stroke-width="1.5"/>
-<circle cx="388" cy="200" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="384" cy="230" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="375" cy="260" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="359" cy="287" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="338" cy="310" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="314" cy="328" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="285" cy="340" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="255" cy="347" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="224" cy="347" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="194" cy="340" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="166" cy="328" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="141" cy="310" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="120" cy="287" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="104" cy="260" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="95" cy="230" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="92" cy="200" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="95" cy="169" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="104" cy="139" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="120" cy="113" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="141" cy="90" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="166" cy="71" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="194" cy="59" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="224" cy="52" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="255" cy="52" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="285" cy="59" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="314" cy="71" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="338" cy="90" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="359" cy="113" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="375" cy="139" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<circle cx="384" cy="169" r="5" fill="none" stroke="#3355cc" stroke-width="1.2"/>
-<line x1="80" y1="200" x2="400" y2="200" stroke="#888" stroke-width="0.5" stroke-dasharray="6 4"/>
-<line x1="240" y1="40" x2="240" y2="360" stroke="#888" stroke-width="0.5" stroke-dasharray="6 4"/>
-<text x="240" y="375" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">TOP VIEW</text>
-</svg>
+<img class="diag-photo" src="imgs/diagram-5674399.png" alt="5674399 GEAR &amp; BEARING GP-SWING">
+</div>
+<div class="diagram-parts-list">
+<div class="diagram-parts-title">5674399 GEAR &amp; BEARING GP-SWING</div>
+<div class="diagram-part-row"><span class="dpr-num">1</span><div class="dpr-thumb"><img src="https://caterpillar.scene7.com/is/image/Caterpillar/CM20220428-fec5f-73dcd?fmt=webp&hei=48&wid=48" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">352-7064</span><a href="#" class="dpr-partlink dpr-partname">12.5mm Outer Diameter Front Lines Cap</a></div></div>
+<div class="diagram-part-row"><span class="dpr-num">2</span><div class="dpr-thumb"><img src="https://caterpillar.scene7.com/is/image/Caterpillar/CM20210617-1fd64-89f60?fmt=webp&hei=48&wid=48" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">3B-8489</span><a href="#" class="dpr-partlink dpr-partname">1/8-27 PTF Hex Head Special Grease Fitting Adapter</a></div></div>
+<div class="diagram-part-row"><span class="dpr-num">3</span><div class="dpr-thumb"><img src="https://caterpillar.scene7.com/is/image/Caterpillar/CM20220422-1c001-0bb1f?fmt=webp&hei=48&wid=48" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">227-6071</span><a href="#" class="dpr-partlink dpr-partname">Undercarriage Frame Dust Seal</a></div></div>
+<div class="diagram-part-row"><span class="dpr-num">4</span><div class="dpr-thumb"><img src="https://caterpillar.scene7.com/is/image/Caterpillar/CM20240506-5ec3b-ea72d?fmt=webp&hei=48&wid=48" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">148-4685</span><a href="#" class="dpr-partlink dpr-partname">Swing Gear and Bearing Bulk Seal</a></div></div>
+</div>
+</div>
+
+<div class="diagram-slide">
+<div class="diagram-img-area">
+<img class="diag-photo" src="imgs/diagram-6211633.png" alt="6211633 GEAR &amp; BEARING GP-SWING">
 </div>
 <div class="diagram-parts-list">
 <div class="diagram-parts-title">6211633 GEAR &amp; BEARING GP-SWING</div>
@@ -414,21 +389,7 @@ details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
 
 <div class="diagram-slide">
 <div class="diagram-img-area">
-<svg viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg" font-family="Arial,sans-serif">
-<rect width="480" height="380" fill="#fff"/>
-<text x="240" y="22" text-anchor="middle" font-size="11" font-weight="bold" fill="#222">5772733 GEAR &amp; BEARING GP-SWING</text>
-<ellipse cx="240" cy="200" rx="110" ry="55" fill="none" stroke="#3355cc" stroke-width="2.5"/>
-<ellipse cx="240" cy="185" rx="110" ry="55" fill="none" stroke="#3355cc" stroke-width="1.5" stroke-dasharray="3 2"/>
-<ellipse cx="240" cy="200" rx="38" ry="20" fill="none" stroke="#3355cc" stroke-width="2"/>
-<line x1="130" y1="200" x2="130" y2="185" stroke="#3355cc" stroke-width="2.5"/>
-<line x1="350" y1="200" x2="350" y2="185" stroke="#3355cc" stroke-width="2.5"/>
-<rect x="195" y="138" width="90" height="40" rx="4" fill="none" stroke="#666" stroke-width="1.5"/>
-<text x="240" y="162" text-anchor="middle" font-size="10" fill="#444">UPPER FRAME</text>
-<circle cx="175" cy="260" r="35" fill="none" stroke="#555" stroke-width="1.5"/>
-<circle cx="350" cy="285" r="25" fill="none" stroke="#555" stroke-width="1.5"/>
-<text x="100" y="345" font-size="9" fill="#333">FWD</text>
-<polygon points="88,340 100,345 88,350" fill="#333"/>
-</svg>
+<img class="diag-photo" src="imgs/diagram-5772733.png" alt="5772733 GEAR &amp; BEARING GP-SWING">
 </div>
 <div class="diagram-parts-list">
 <div class="diagram-parts-title">5772733 GEAR &amp; BEARING GP-SWING</div>
@@ -440,32 +401,6 @@ details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
 <div class="diagram-part-row"><span class="dpr-num">6</span><div class="dpr-thumb"><img src="imgs/no-image.webp" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">1459278</span><span class="dpr-partname">BOLT</span></div></div>
 <div class="diagram-part-row"><span class="dpr-num">7</span><div class="dpr-thumb"><img src="imgs/no-image.webp" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">5Q3560</span><span class="dpr-partname">BOLT</span></div></div>
 <div class="diagram-part-row"><span class="dpr-num">8</span><div class="dpr-thumb"><img src="imgs/no-image.webp" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">4N9170</span><span class="dpr-partname">CLIP</span></div></div>
-</div>
-</div>
-
-<div class="diagram-slide">
-<div class="diagram-img-area">
-<svg viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg" font-family="Arial,sans-serif">
-<rect width="480" height="380" fill="#fff"/>
-<text x="240" y="22" text-anchor="middle" font-size="11" font-weight="bold" fill="#222">5674399 GEAR &amp; BEARING GP-SWING</text>
-<rect x="60" y="60" width="360" height="260" rx="8" fill="none" stroke="#bbb" stroke-width="1.5"/>
-<ellipse cx="240" cy="210" rx="105" ry="52" fill="none" stroke="#3355cc" stroke-width="2.5"/>
-<ellipse cx="240" cy="198" rx="105" ry="52" fill="none" stroke="#3355cc" stroke-width="1.5" stroke-dasharray="3 2"/>
-<ellipse cx="240" cy="210" rx="36" ry="18" fill="none" stroke="#3355cc" stroke-width="2"/>
-<line x1="135" y1="210" x2="135" y2="198" stroke="#3355cc" stroke-width="2.5"/>
-<line x1="345" y1="210" x2="345" y2="198" stroke="#3355cc" stroke-width="2.5"/>
-<text x="155" y="82" font-size="10" fill="#444">UNDERCARRIAGE</text>
-<text x="165" y="94" font-size="10" fill="#444">FRAME</text>
-<text x="370" y="345" font-size="9" fill="#333">FWD</text>
-<polygon points="358,340 370,345 358,350" fill="#333"/>
-</svg>
-</div>
-<div class="diagram-parts-list">
-<div class="diagram-parts-title">5674399 GEAR &amp; BEARING GP-SWING</div>
-<div class="diagram-part-row"><span class="dpr-num">1</span><div class="dpr-thumb"><img src="imgs/no-image.webp" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">3527064</span><span class="dpr-partname">CAP</span></div></div>
-<div class="diagram-part-row"><span class="dpr-num">2</span><div class="dpr-thumb"><img src="imgs/no-image.webp" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">3B8489</span><span class="dpr-partname">ADAPTER</span></div></div>
-<div class="diagram-part-row"><span class="dpr-num">3</span><div class="dpr-thumb"><img src="imgs/no-image.webp" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">2276071</span><span class="dpr-partname">SEAL-DUST</span></div></div>
-<div class="diagram-part-row"><span class="dpr-num">4</span><div class="dpr-thumb"><img src="imgs/no-image.webp" alt="" width="24" height="24"></div><div class="dpr-info"><span class="dpr-partnum">1484685</span><span class="dpr-partname">SEAL</span></div></div>
 </div>
 </div>
 
@@ -601,8 +536,8 @@ document.getElementById('qtyModal').addEventListener('click', function(e) {
   function show(n) {
     slides.forEach(function(s,i){ s.classList.toggle('active', i===n); });
     dots.forEach(function(d,i){ d.classList.toggle('active', i===n); });
-    if (prev) prev.disabled = (n===0);
-    if (next) next.disabled = (n===total-1);
+    if (prev) prev.style.visibility = (n===0) ? 'hidden' : 'visible';
+    if (next) next.style.visibility = (n===total-1) ? 'hidden' : 'visible';
     cur = n;
   }
   show(0);
