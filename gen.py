@@ -39,7 +39,7 @@ cards = [
 
 def card_html(key, label):
     if key == "drivetrain":
-        return '<a class="cat-card active" href="https://claude.ai/artifact/BUcH2EucdVjs1UmbLUwfnD" id="drivetrain-card" aria-label="Browse Drivetrain"><div class="card-img"><img src="' + I[key] + '" alt="" width="110" height="110"></div><div class="card-body" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;"><span class="card-label">' + label + '</span><span style="font-size:11px;color:#555;font-weight:400;">Click Drivetrain to advance the prototype</span></div></a>'
+        return '<a class="cat-card active" href="https://claude.ai/artifact/BUcH2EucdVjs1UmbLUwfnD" id="drivetrain-card" aria-label="Browse Drivetrain"><div class="card-img"><img src="' + I[key] + '" alt="" width="110" height="110"></div><div class="card-body" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;"><span class="card-label">' + label + '</span><span style="font-size:11px;color:#555;font-weight:400;">&#x25BA; Select to advance prototype</span></div></a>'
     return '<div class="cat-card inert"><div class="card-img"><img src="' + I[key] + '" alt="" width="110" height="110"></div><div class="card-body"><span class="card-label">' + label + '</span></div></div>'
 
 grid_html = "\n".join(card_html(k,l) for k,l in cards)
@@ -101,8 +101,18 @@ main{flex:1;}
 .acct-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid #ddd;min-width:210px;box-shadow:0 4px 16px rgba(0,0,0,.13);z-index:200;}
 .acct-menu.open{display:block;}
 .acct-menu a{display:block;padding:11px 16px;font-size:13px;color:#111;text-decoration:none;border-bottom:1px solid #f0f0f0;}
+.acct-menu a.acct-sub-item{padding-left:28px;font-size:12px;color:#666;background:#FAFAFA;}
 .acct-menu a.acct-signout{border-bottom:none;color:#888;font-size:12px;border-top:1px solid #eee;padding-top:10px;}
-.acct-menu a:hover{background:#f8f8f8;}
+.acct-menu a:hover{background:#f0f0f0;}
+/* Add Equipment reactive dropdown */
+.equip-dropdown{display:none;position:fixed;top:54px;background:#fff;border:1px solid #D0D0D0;border-top:2px solid var(--yellow);border-radius:0 0 10px 10px;box-shadow:0 4px 16px rgba(0,0,0,.12);padding:12px 14px;z-index:99;}
+.equip-dropdown.open{display:block;}
+.equip-drop-inner{display:flex;gap:10px;align-items:center;}
+.equip-drop-fields{flex:1;display:flex;flex-direction:column;gap:8px;}
+.equip-drop-input{width:100%;padding:8px 12px;border:1px solid #D0D0D0;border-radius:6px;font-size:12px;font-family:inherit;background:#fff;color:#111;outline:none;}
+.equip-drop-input:focus{border-color:var(--yellow);box-shadow:0 0 0 2px rgba(255,205,17,.2);}
+.equip-drop-add{background:var(--yellow);border:none;padding:10px 18px;border-radius:6px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;flex-shrink:0;transition:background .12s;}
+.equip-drop-add:hover{background:#e6b800;}
 .wrap{max-width:1280px;margin:0 auto;padding:0 16px;}
 .breadcrumb{padding:14px 0 0;font-size:12px;color:var(--muted);display:flex;gap:6px;align-items:center;}
 .breadcrumb a{color:var(--muted);text-decoration:none;}
@@ -203,9 +213,11 @@ parts.append("""<div class="new-exp-banner" id="newExpBanner" role="banner">
         </button>
         <div class="acct-menu">
           <a href="#" onclick="return false;">Manage My Equipment</a>
+          <a href="#" onclick="return false;" class="acct-sub-item">&#8627; Parts Diagram</a>
           <a href="#" onclick="return false;">Order History</a>
           <a href="#" onclick="return false;">View Finance Solutions</a>
           <a href="#" onclick="return false;">Cat&reg; Rewards</a>
+          <a href="#" onclick="return false;">Service Information System (SIS)</a>
           <a href="#" class="acct-signout" onclick="return false;">Sign Out</a>
         </div>
       </div>
@@ -215,6 +227,16 @@ parts.append("""<div class="new-exp-banner" id="newExpBanner" role="banner">
     </div>
   </div>
 </header>""".format(logo=I['logo'], apps=cat_app_links, langs=lang_items))
+
+parts.append("""<div class="equip-dropdown" id="equipDropdown" aria-label="Add equipment">
+  <div class="equip-drop-inner">
+    <div class="equip-drop-fields">
+      <input type="text" class="equip-drop-input" id="dropSerial" placeholder="Serial number, e.g. ZBN60173" autocomplete="off">
+      <input type="text" class="equip-drop-input" id="dropModel" placeholder="Model name, e.g. 320 Excavator" autocomplete="off">
+    </div>
+    <button type="button" class="equip-drop-add" id="dropAddBtn">Add</button>
+  </div>
+</div>""")
 
 parts.append("""<main>
   <div class="wrap">
@@ -299,6 +321,27 @@ parts.append("""<script>
   dropdown('.cat-wrap','.cat-app-menu');
   dropdown('.lang-wrap','.lang-menu');
   dropdown('.acct-wrap','.acct-menu');
+})();
+(function(){
+  var addBtn=document.querySelector('.add-equip-btn');
+  var drop=document.getElementById('equipDropdown');
+  var area=document.querySelector('.search-area');
+  if(!addBtn||!drop)return;
+  function positionDrop(){
+    if(area){var r=area.getBoundingClientRect();drop.style.left=r.left+'px';drop.style.width=r.width+'px';}
+  }
+  addBtn.addEventListener('click',function(e){
+    e.stopPropagation();
+    var wasOpen=drop.classList.contains('open');
+    drop.classList.toggle('open');
+    if(!wasOpen){positionDrop();var s=document.getElementById('dropSerial');if(s)s.focus();}
+  });
+  document.addEventListener('click',function(e){
+    if(!drop.contains(e.target)&&e.target!==addBtn)drop.classList.remove('open');
+  });
+  var addConfirm=document.getElementById('dropAddBtn');
+  if(addConfirm)addConfirm.addEventListener('click',function(){drop.classList.remove('open');});
+  window.addEventListener('resize',function(){if(drop.classList.contains('open'))positionDrop();});
 })();
 </script>""")
 
