@@ -12,8 +12,13 @@ def b64img(name, ext="webp"):
 
 LOGO = b64img("logo")
 
-# Real product images from parts.cat.com Drivetrain (model=320, serialNumber=ZBN60173)
-PI = {k: b64img(k) for k in ["p01","p02","p03","p04","p05","p06","p07","p08","p09","p10","p11","p12","p13","p14","p15","p16","p17","p18","p19","p20"]}
+# Real product images from parts.cat.com Drivetrain page 1 (model=320, serialNumber=ZBN60173)
+# 8X-9620 and 8W-0212 are confirmed CAT logo placeholders (720-882B) — use LOGO for those
+_REAL_IMG_PARTS = ["595-3692","226-2826","2A-6946","8R-7036","106-0933","150-8355",
+                   "436-2594","384-4562","0R-9043","290-4140","365-4922","255-0902",
+                   "562-8118","381-3629",
+                   "303-2504","163-9366","363-1924","563-8599"]
+PI = {p: b64img("prod_" + p) for p in _REAL_IMG_PARTS}
 MACH = b64img("mach")  # 320 Excavator machine photo
 
 AI_RING = "M146.9441,80.4873s-19.4829,30.9684-24.8493,39.4806c-.728,1.1547-2.3036,1.3963-3.3499.5197l-3.2698-2.7397c-.8644-.7243-1.0606-1.9759-.4593-2.9299l23.8364-38.2222c1.2222-2.116,1.4882-5.5896.2659-7.7065l-25.2972-42.2833c-1.6225-2.6259-4.1195-4.1863-7.1818-4.1863h-49.4686c-2.4434,0-4.6662.8747-6.563,3.833l-25.3649,43.3431c-1.2068,2.0903-1.2068,4.7189.0154,6.836l23.6882,38.1261c.6002.966.3868,2.2278-.4976,2.9427l-3.2926,2.6617c-1.053.8513-2.6099.5948-3.3263-.5542-5.263-8.4418-24.1294-38.8138-24.1294-38.8138-4.392-7.3564-4.392-8.8554,0-15.5869l25.6013-43.7464c4.5256-7.2145,6.0802-7.7666,13.4843-7.7666h50.6373c7.5399,0,9.48,1.3059,13.4987,7.7934l26.2343,43.4116c3.8162,6.0758,3.8868,8.7377-.2122,15.5878ZM162.2935,62.9806l-32.1653-53.5232c-3.3669-5.8331-9.6427-9.4574-16.3787-9.4574h-63.2298c-6.7349,0-13.0107,3.6233-16.3797,9.4574L2.5256,62.9806c-3.367,5.832-3.368,13.0788,0,18.9127l28.2883,46.6271c.6972,1.1489,2.2475,1.4194,3.2927.5745l3.7953-3.0682c1.1111-.8982,1.3866-2.4798.6446-3.7008l-27.5376-45.3298c-1.6238-2.8129-1.6238-6.3066-.001-9.1185L42.6223,14.3554c1.6247-2.813,4.6509-4.5592,7.8974-4.5592h62.0707c3.8633,0,7.7265,2.2257,9.5084,5.3119l31.5381,52.7697c1.3222,2.2578,1.3075,6.6256-.2811,9.1185l-28.17,45.4216c-.7443,1.206-.4906,2.7755.5957,3.6857l3.7147,3.1125c1.0344.8667,2.5963.6159,3.3066-.5316,5.7475-9.2843,28.4382-45.0842,29.4556-46.7325.0269-.0435.0491-.081.0745-.1254,3.3285-5.8225,3.3147-13.0362-.0395-18.846ZM112.1395,111.86l20.5967-33.2474c2.7793-4.1012,3.025-8.0552.2349-11.8367l-20.5471-34.3182c-2.9432-4.9527-4.5764-6.0687-10.3635-6.0687h-39.7693c-5.3322,0-6.9432.328-10.3665,6.0758,0,0-20.5405,34.9936-20.5608,35.026-2.8827,4.6124-3.2416,5.9807-.0064,11.9361.0267.0491.0547.1004.0842.1478l20.1842,32.4066c.6495,1.0426,2.0652,1.2811,3.0205.5089l1.7346-1.4022c.8033-.6494.996-1.796.4491-2.6723,0,0-19.9878-32.0644-20.0374-32.1498-1.4254-2.4578-.8244-4.2267.0669-5.7315l20.2119-34.4388c1.2871-2.326,3.2387-3.4297,5.7357-3.4297h38.821c2.012,0,4.3815,1.1694,5.6413,3.3912l19.8992,33.2572c1.0266,1.8081,1.1054,4.5671.1082,6.1993l-20.1049,32.963c-.5378.8645-.3575,1.993.4229,2.647l1.4959,1.2233c.9528.7984,2.3917.5687,3.0486-.4866ZM62.8749,105.8346l.6085-.4919c.8649-.6992.9872-2.0168.3925-2.9565l-16.6255-26.6169c-.7804-1.3868-.7804-3.1105.0072-4.5098l15.887-27.2159c.7619-1.357,2.1736-2.1993,3.682-2.1993h30.8556c1.5086,0,2.9201.8423,3.681,2.1974l16.3854,27.3383c.7804,1.387.1456,2.5276-.6339,3.9144l-17.0732,27.0234c-.5859.9273-.3957,2.1449.445,2.8494l.6115.5124c1.0173.8524,2.5528.6116,3.2604-.5112l17.1937-27.2856c.0283-.045.0565-.0935.0816-.1403,2.0266-3.7809,2.6406-5.2507.597-8.8809l-16.3853-27.3383c-2.3115-3.5931-3.6542-4.8188-8.1632-4.8188h-30.8556c-4.1894,0-5.9065.943-8.1692,4.8311,0,0-15.9067,27.2396-15.9361,27.2865-2.1306,3.398-2.5072,4.9471.05,9.4681l16.7927,26.9294c.7,1.1082,2.2915,1.4392,3.3108.6151Z"
@@ -31,69 +36,128 @@ cat_app_links += ['<a href="#" onclick="return false;" class="cat-app-help" styl
 cat_app_html = "\n".join(cat_app_links)
 
 CATS = [
-    "Brakes &amp; Components",
-    "Clutches &amp; Sprockets",
-    "Differentials",
-    "Drive Chains &amp; Sprockets",
-    "Drivetrain Repair &amp; Service Kits",
-    "Final Drive",
-    "Gears",
-    "Other Drivetrain Components",
+    ("Brakes &amp; Components", 6),
+    ("Clutches &amp; Components", 1),
+    ("Differentials", 6),
+    ("Driveshafts &amp; Joints", 3),
+    ("Final Drive", 26),
+    ("Gears", 18),
+    ("Other Drivetrain Components", 19),
+    ("Steering", 1),
+    ("Transmissions &amp; Components", 4),
 ]
 
-# Spec filters: (label, [(us_label, metric_label), ...] or None for checkbox-only)
+# Spec filters: (label, [(us_label, metric_label), ...] for dimension specs, or [str, ...] for categorical)
 SPECS = [
-    ("Diameter", [
-        ('Under 4"', "Under 102mm"),
-        ('4" – 10"', "102 – 254mm"),
+    ("Bore Diameter (in)", [
+        ('Under 1"', "Under 25mm"),
+        ('1" – 3"', "25 – 76mm"),
+        ('3" – 6"', "76 – 152mm"),
+        ('6"+', "152mm+"),
+    ]),
+    ("Cross Section Diameter (in)", [
+        ('Under 0.5"', "Under 13mm"),
+        ('0.5" – 1.5"', "13 – 38mm"),
+        ('1.5"+', "38mm+"),
+    ]),
+    ("Diameter (in)", [
+        ('Under 5"', "Under 127mm"),
+        ('5" – 15"', "127 – 381mm"),
+        ('15" – 30"', "381 – 762mm"),
+        ('30"+', "762mm+"),
+    ]),
+    ("Height (in)", [
+        ('Under 2"', "Under 51mm"),
+        ('2" – 5"', "51 – 127mm"),
+        ('5"+', "127mm+"),
+    ]),
+    ("Inside Diameter (in)", [
+        ('Under 5"', "Under 127mm"),
+        ('5" – 15"', "127 – 381mm"),
+        ('15" – 30"', "381 – 762mm"),
+        ('30"+', "762mm+"),
+    ]),
+    ("Length (in)", [
+        ('Under 24"', "Under 610mm"),
+        ('24" – 72"', "610 – 1829mm"),
+        ('72"+', "1829mm+"),
+    ]),
+    ("Number of Teeth", ["16 – 30", "31 – 50", "51 – 80", "81+"]),
+    ("Outer Diameter (in)", [
+        ('Under 5"', "Under 127mm"),
+        ('5" – 15"', "127 – 381mm"),
+        ('15" – 30"', "381 – 762mm"),
+        ('30"+', "762mm+"),
+    ]),
+    ("Outside Diameter (in)", [
+        ('Under 10"', "Under 254mm"),
         ('10" – 20"', "254 – 508mm"),
-        ('20"+', "508mm+"),
+        ('20" – 35"', "508 – 889mm"),
+        ('35"+', "889mm+"),
     ]),
-    ("Thickness", [
+    ("Overall Length (in)", [
+        ('Under 24"', "Under 610mm"),
+        ('24" – 72"', "610 – 1829mm"),
+        ('72" – 120"', "1829 – 3048mm"),
+        ('120"+', "3048mm+"),
+    ]),
+    ("Overall Width (in)", [
+        ('Under 2"', "Under 51mm"),
+        ('2" – 6"', "51 – 152mm"),
+        ('6"+', "152mm+"),
+    ]),
+    ("Seal Type", ["Duo Cone", "Lip Seal", "O-Ring", "Mechanical Face"]),
+    ("Thickness (in)", [
         ('Under 0.1"', "Under 2.5mm"),
-        ('0.1" – 0.5"', "2.5 – 12.7mm"),
-        ('0.5"+', "12.7mm+"),
+        ('0.1" – 0.25"', "2.5 – 6.4mm"),
+        ('0.25"+', "6.4mm+"),
     ]),
-    ("Material", ["Carbon Steel", "Alloy Steel", "Silicone Rubber", "Bronze"]),
-    ("Drive Type", ["Universal Joint", "Slip Joint", "Planetary Gear", "Duo Cone Seal"]),
+    ("Type", ["Bearing", "Disc", "Gear", "Seal", "Assembly", "Spider"]),
+    ("Washer Type", ["Flat", "Lock", "Spring", "Tab"]),
+    ("Width (in)", [
+        ('Under 2"', "Under 51mm"),
+        ('2" – 6"', "51 – 152mm"),
+        ('6"+', "152mm+"),
+    ]),
 ]
 
-# Products: (img_key, part_num, name, description, fit)
-# fit = "fits" (green Fits 320 Excavator) or "unverified" (orange Verify fit)
-# Order: factory fit + image → factory fit + no image → not fit + image → not fit + no image
+# Products: (part_num, name, description, fit, has_img)
+# fit = "fits" (green badge) or "unverified" (no badge)
+# has_img = True for real product photo, False for CAT logo placeholder
+# Prototype order: factory fit first, then unverified; within each group, real page order
 PRODUCTS = [
-    # --- Factory fit + real image ---
-    ("p01","595-3692","Engine Cylinder Piston","Cat® Engine Cylinder Piston converts combustion energy into mechanical motion, driving the crankshaft to power the equipment.","fits"),
-    ("p03","226-2826","874.5mm Outer Diameter Brake Friction Disc","Cat® Friction Disc (Brake).","fits"),
-    ("p04","2A-6946","Link Group-Steering","Cat® Steering Link Group.","fits"),
-    ("p05","8R-7036","Universal Joint Bearing Spider","Cat® part 8R-7036 universal joint bearing spider transmits rotational motion between two intersecting shafts.","fits"),
-    ("p06","106-0933","Universal Joint Assembly","Cat® Universal Joint Assembly (10C).","fits"),
-    ("p07","150-8355","Universal Joint Assembly","Cat® Universal Joint Assembly (14.5C Interlock).","fits"),
-    ("p08","436-2594","101.62mm Inner Diameter Roller Bearing","Shop Cat® cylindrical roller bearing for off-highway truck final drive. 436-2594 is for low to medium-speed and high-load applications.","fits"),
-    ("p10","0R-9043","Wheel Arrangement","Cat Reman wheel arrangement. Best-built Cat® parts with full warranty when and where you need them, at a fraction of the price.","fits"),
-    ("p12","365-4922","538.62mm Outer Diameter Duo Cone Seal","Cat® parts duo cone seal maintains a tight seal and avoids oil leakage. Shop this part for machines compatible with 365-4922.","fits"),
-    ("p15","303-2504","Joint Group-Slip","Cat® Joint Group-Slip for drivetrain assemblies requiring a precision slip joint connection.","fits"),
-    ("p16","163-9366","2.413mm Thick Outer Plate","Cat® 2.413mm Thick Outer Plate for Service and Parking Brake. Carbon steel construction for durability.","fits"),
-    ("p17","363-1924","Joint Group-Slip","Cat® Slip Joint Group (15.5C) for smooth drivetrain power transmission.","fits"),
-    # --- Factory fit + no image (default CAT logo from real site) ---
-    ("p14","569-4288","90 Internal Teeth Ring Gear","Cat® Ring Gear, 90 Teeth.","fits"),
+    # --- Factory fit + real image (page 1 & 2 order) ---
+    ("595-3692","Engine Cylinder Piston","Cat® Engine Cylinder Piston converts combustion energy into mechanical motion, driving the crankshaft to power the equipment","fits",True),
+    ("226-2826","874.5mm Outer Diameter Brake Friction Disc","Cat® Friction Disc (Brake)","fits",True),
+    ("2A-6946","Link Group-Steering","Cat® Steering Link Group","fits",True),
+    ("8R-7036","Universal Joint Bearing Spider","Cat® part 8R-7036 universal joint bearing spider transmits rotational motion between two intersecting shafts.","fits",True),
+    ("106-0933","Universal Joint Assembly","Cat® Universal Joint Assembly (10C)","fits",True),
+    ("150-8355","Universal Joint Assembly","Cat® Universal Joint Assembly (14.5C Interlock)","fits",True),
+    ("436-2594","101.62mm Inner Diameter Roller Bearing","Shop Cat® cylindrical roller bearing for off-highway truck final drive. 436-2594 is for low to medium-speed and high-load applications.","fits",True),
+    ("0R-9043","Wheel Arrangement","You can have it all with Cat Reman. Best-built Cat® parts with full warranty when and where you need them - all at a fraction of the price.","fits",True),
+    ("365-4922","538.62mm Outer Diameter Duo Cone Seal","Cat® parts duo cone seal maintains a tight seal and avoid oil leakage. Shop this part for machines compatible with 365-4922.","fits",True),
+    ("303-2504","Joint Group-Slip","Cat® Joint Group-Slip","fits",True),
+    ("163-9366","2.413mm Thick Outer Plate","Cat® 2.413mm Thick Outer Plate for Service and Parking Brake","fits",True),
+    ("363-1924","Joint Group-Slip","Cat® Slip Joint Group (15.5C)","fits",True),
+    # --- Factory fit + no image ---
+    ("8W-0212","2.413mm Thick Outer Plate","Cat® 2.413mm Thick Outer Plate for Service and Parking Brake","fits",False),
     # --- Not factory fit + real image ---
-    ("p09","384-4562","Bearing Assembly","Find premium bearing assembly and more with Cat. Reliable heavy-duty components for your needs.","unverified"),
-    ("p11","290-4140","190.27mm Transmission Steel Planet Gear","Cat® Planet Gear (Final Drive).","unverified"),
-    ("p13","255-0902","Drive Shaft Spider Bearing","Cat® 255-0902 drive shaft spider bearing supports and aligns the bearings for smooth power transmission.","unverified"),
-    ("p18","563-8599","Duo Seal Group","Shop Cat® duo cone seal group to protect against particle intrusion for machines compatible with 563-8599.","unverified"),
-    ("p19","118-6606","170mm ID Fan Type Outer Plate","Shop Cat® final drive plate brake parts for machines compatible with Cat part 118-6606.","unverified"),
-    ("p20","179-0745","Final Drive Spindle","Cat® Final Drive Spindle is responsible for transmitting power from the differential to the wheels.","unverified"),
-    # --- Not factory fit + no image (default CAT logo from real site) ---
-    ("p02","584-2564","Right Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the track drive sprocket.","unverified"),
+    ("384-4562","Bearing Assembly","Find premium bearing assembly and more with Cat. Explore reliable heavy-duty components like alternators and batteries for your needs.","unverified",True),
+    ("290-4140","190.27mm Transmission Steel Planet Gear","Cat® Planet Gear (Final Drive)","unverified",True),
+    ("255-0902","Drive Shaft Spider Bearing","Cat® 255-0902 drive shaft spider bearing supports and aligns the bearings for smooth power transmission.","unverified",True),
+    ("562-8118","240S Roller 27 Links Drive Chain","Cat® Roller Chain for tandem drive connecting multiple axles or wheels to transmit power from the engine to the driven wheels","unverified",True),
+    ("381-3629","1066.8mm Outer Diameter Brake Friction Disc","Cat® Friction Disc (Brake)","unverified",True),
+    ("563-8599","Duo Seal Group","Shop Cat® parts duo cone seal group to protect against particle intrusion for machines compatible with 563-8599.","unverified",True),
+    # --- Not factory fit + no image ---
+    ("8X-9620","295mm Long Ball Stud","Shop Cat® 295mm long ball stud used in steering cylinder rod end mounting and steering tie rod linkage for machines compatible with 8X-9620.","unverified",False),
 ]
 
 INFO_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#AAA" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
 
 CHAR_LIMIT = 100
 
-def prod_card(img_key, num, name, desc, fit='fits'):
-    img_src = LOGO
+def prod_card(num, name, desc, fit='fits', has_img=True):
+    img_src = PI[num] if has_img else LOGO
     if len(desc) > CHAR_LIMIT:
         cutoff = desc[:CHAR_LIMIT].rsplit(' ', 1)[0]
         desc_html = cutoff + '... <a href="#" class="more-link" onclick="return false;">More</a>'
@@ -108,10 +172,11 @@ def prod_card(img_key, num, name, desc, fit='fits'):
         )
     else:
         badge = ''
+    blend = ' style="mix-blend-mode:multiply;"' if has_img else ''
     return (
         '<div class="prod-card">'
         '<div class="prod-img">'
-        '<img src="' + img_src + '" alt="' + name + '" width="140" height="140">'
+        '<img src="' + img_src + '" alt="' + name + '" width="140" height="140"' + blend + '>'
         '</div>'
         '<div class="prod-info">'
         '<span class="prod-num">' + num + '</span>'
@@ -353,8 +418,8 @@ parts.append('<div class="page-layout">')
 
 # SIDEBAR
 cat_links = "\n".join(
-    '<li><a href="#" onclick="return false;">' + c + '</a></li>'
-    for c in CATS
+    '<li><a href="#" onclick="return false;">' + c + ' <span style="color:#999;font-size:11px;">(' + str(n) + ')</span></a></li>'
+    for c, n in CATS
 )
 
 def spec_filter_html(label, options):
@@ -435,8 +500,8 @@ parts.append("""<div class="equip-card" id="equipCard">
 </div>""".replace("{machine}", MACHINE_ICON).replace("{mach}", MACH).replace("{info}", INFO_SVG))
 
 # 20 product cards
-for img_key, num, name, desc, fit in PRODUCTS:
-    parts.append(prod_card(img_key, num, name, desc, fit))
+for num, name, desc, fit, has_img in PRODUCTS:
+    parts.append(prod_card(num, name, desc, fit, has_img))
 
 parts.append('</div>') # prod-grid
 
