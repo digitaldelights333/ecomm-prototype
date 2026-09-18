@@ -39,7 +39,7 @@ cards = [
 
 def card_html(key, label):
     if key == "drivetrain":
-        return '<a class="cat-card active" href="https://claude.ai/artifact/BUcH2EucdVjs1UmbLUwfnD" id="drivetrain-card" target="_blank" aria-label="Browse Drivetrain"><div class="card-img"><img src="' + I[key] + '" alt="" width="110" height="110"></div><div class="card-body" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;"><span class="card-label">' + label + '</span><span style="font-size:11px;color:#555;font-weight:400;">Click Drivetrain to advance the prototype</span></div></a>'
+        return '<a class="cat-card active" href="https://claude.ai/artifact/BUcH2EucdVjs1UmbLUwfnD" id="drivetrain-card" aria-label="Browse Drivetrain"><div class="card-img"><img src="' + I[key] + '" alt="" width="110" height="110"></div><div class="card-body" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;"><span class="card-label">' + label + '</span><span style="font-size:11px;color:#555;font-weight:400;">Click Drivetrain to advance the prototype</span></div></a>'
     return '<div class="cat-card inert"><div class="card-img"><img src="' + I[key] + '" alt="" width="110" height="110"></div><div class="card-body"><span class="card-label">' + label + '</span></div></div>'
 
 grid_html = "\n".join(card_html(k,l) for k,l in cards)
