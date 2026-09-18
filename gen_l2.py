@@ -93,7 +93,7 @@ INFO_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="
 CHAR_LIMIT = 100
 
 def prod_card(img_key, num, name, desc, fit='fits'):
-    img_src = PI[img_key]
+    img_src = LOGO
     if len(desc) > CHAR_LIMIT:
         cutoff = desc[:CHAR_LIMIT].rsplit(' ', 1)[0]
         desc_html = cutoff + '... <a href="#" class="more-link" onclick="return false;">More</a>'
@@ -204,7 +204,10 @@ a{color:inherit;text-decoration:none;}
 .spec-filter[open] summary::after{transform:rotate(-135deg);margin-top:2px;}
 .spec-options{padding:4px 0 10px;}
 .spec-option{display:flex;align-items:center;gap:7px;padding:4px 0;font-size:12px;color:var(--text);}
-.spec-option input[type="checkbox"]{width:14px;height:14px;cursor:pointer;accent-color:#000;flex-shrink:0;}
+.spec-option input[type="checkbox"]{width:14px;height:14px;cursor:pointer;flex-shrink:0;-webkit-appearance:none;appearance:none;background:#fff;border:1.5px solid #bbb;border-radius:3px;position:relative;transition:border-color .12s;}
+.spec-option input[type="checkbox"]:hover{border-color:#888;}
+.spec-option input[type="checkbox"]:checked{background:#fff;border-color:#666;}
+.spec-option input[type="checkbox"]:checked::after{content:"";position:absolute;left:3px;top:0;width:5px;height:9px;border:2px solid #333;border-top:none;border-left:none;transform:rotate(45deg);}
 .spec-option label{cursor:pointer;line-height:1.3;}
 /* Equipment context button in search bar (L2/L3) */
 .equip-context-btn{display:flex;align-items:center;gap:6px;background:var(--yellow);border:none;border-right:1px solid #D0D0D0;padding:0 14px;cursor:pointer;white-space:nowrap;flex-shrink:0;font-size:13px;font-weight:700;color:#111;font-family:inherit;height:36px;transition:background .12s;}
@@ -217,7 +220,7 @@ a{color:inherit;text-decoration:none;}
 /* PRODUCT GRID — CSS Grid stretch gives uniform row heights */
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 /* EQUIPMENT CARD */
-.equip-card{background:#fff;border:2px solid var(--yellow);border-radius:10px;padding:18px;display:flex;flex-direction:column;}
+.equip-card{background:#fff;border:2px solid var(--yellow);border-radius:10px;padding:18px 18px 12px;display:flex;flex-direction:column;}
 .equip-mach-img{width:100%;height:100px;object-fit:contain;border-radius:6px;background:#F7F7F7;flex-shrink:0;margin-bottom:8px;}
 .equip-card-title{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;margin-bottom:12px;}
 /* Confirmed state — Change button pushed to bottom matching Add to Cart row */
@@ -240,9 +243,9 @@ a{color:inherit;text-decoration:none;}
 .equip-cancel-btn:hover{border-color:#999;color:#333;}
 /* PRODUCT CARDS */
 .prod-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s;}
-.prod-card:hover{border-color:#bbb;}
+.prod-card:hover{border-color:#000;box-shadow:0 2px 10px rgba(0,0,0,.1);}
 .prod-img{width:100%;height:160px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
-.prod-img img{width:140px;height:140px;object-fit:contain;mix-blend-mode:multiply;}
+.prod-img img{width:110px;height:110px;object-fit:contain;}
 .prod-info{padding:10px 12px 12px;display:flex;flex-direction:column;flex:1;}
 .prod-num{font-family:"Roboto Mono",monospace;font-size:11px;font-weight:500;color:#555;letter-spacing:.02em;margin-bottom:4px;}
 .prod-name{font-size:13px;font-weight:600;line-height:1.3;color:var(--text);margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
