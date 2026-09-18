@@ -818,7 +818,7 @@ function openQtyModal(name, num, imgSrc, isReal) {
   if (isReal) {
     specEl.innerHTML = '<span class="fit-badge fits"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2E7D32"/><polyline points="20 6 9 17 4 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Factory Fit 320 ZBN60173</span>';
   } else {
-    specEl.innerHTML = '<span style="font-size:12px;color:var(--muted);">Fit not verified for your equipment</span>';
+    specEl.innerHTML = '';
   }
   document.getElementById('qtyPdpLink').style.display = 'block';
   modal.classList.add('open');
