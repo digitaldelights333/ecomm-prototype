@@ -2,17 +2,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root {
+  color-scheme: light;
   --yellow: #FFCD11; --black: #000; --white: #fff;
   --bg: #fff; --card-bg: #F7F7F7; --border: #E0E0E0;
   --text: #111; --muted: #666;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #1A1A1A; --card-bg: #262626; --border: #3A3A3A; --text: #F0F0F0; --muted: #999;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #1A1A1A; --card-bg: #262626; --border: #3A3A3A; --text: #F0F0F0; --muted: #999;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{height:100%;}
