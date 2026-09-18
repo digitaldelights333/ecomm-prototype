@@ -131,7 +131,12 @@ PRODUCTS = [
     ("3D-2891","12.7mm Spherical Diameter Steel Ball","Cat® Ball Bearing (Loose ball only)","fits",True),
     ("593-5616","Planetary Gear","Cat® Planetary Gear","fits",True),
     ("517-4512","Control Group-Electronic","Electronic Control Group (A6N1 Yellow Key)","fits",True),
-    # --- No Factory Fit + real product image ---
+    # --- Factory Fit + CAT logo placeholder ---
+    ("567-7173","Single Row Tapered Roller Bearing","Cat® Single Row Tapered Roller Bearing, ID X OD X W: 254 X 315.9 X 34mm","fits",False),
+    ("569-4288","90 Internal Teeth Ring Gear","Cat® Ring Gear, 90 Teeth","fits",False),
+    ("569-4292","351.8mm Outer Diameter Duo Cone Seal","Cat® Duo Cone Seal (320), Steel and Rubber, Inside Diameter: 319mm","fits",False),
+    ("569-4287","35 Tooth Planetary Gear","Planet Gear","fits",False),
+    # --- No badge + real product image ---
     ("148-4636","34, 14 External Teeth Pinion Shaft","Cat® Pinion Shaft for transmitting power from the swing motor to the swing gear","unverified",True),
     ("174-4874","333.12mm Outside Diameter Duo Cone Seal","Cat® Duo Cone Seal","unverified",True),
     ("561-7005","Control Group-Pedal","Cat® Control Group-Pedal","unverified",True),
@@ -140,11 +145,7 @@ PRODUCTS = [
     ("523-0574","533.5mm Outer Diameter Final Drive","Cat® General Duty Small Excavator Final Drive","unverified",True),
     ("333-2998","533mm Outer Diameter Sprocket Housing","Cat® 533mm Outer Diameter Sprocket Ductile Iron Housing for Final Drive","unverified",True),
     ("378-9517","Drive Group-Swing","Cat® Swing Drive Group (Without Motor)","unverified",True),
-    # --- CAT logo placeholder (no real product photo) ---
-    ("567-7173","Single Row Tapered Roller Bearing","Cat® Single Row Tapered Roller Bearing, ID X OD X W: 254 X 315.9 X 34mm","fits",False),
-    ("569-4288","90 Internal Teeth Ring Gear","Cat® Ring Gear, 90 Teeth","fits",False),
-    ("569-4292","351.8mm Outer Diameter Duo Cone Seal","Cat® Duo Cone Seal (320), Steel and Rubber, Inside Diameter: 319mm","fits",False),
-    ("569-4287","35 Tooth Planetary Gear","Planet Gear","fits",False),
+    # --- No badge + CAT logo placeholder ---
     ("584-2564","Right Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the undercarriage","unverified",False),
     ("584-2563","Left Hand Final Drive","Cat® Final Drive transfers torque from the travel motor to the undercarriage","unverified",False),
 ]
@@ -165,12 +166,6 @@ FIT_BANNER_HTML = (
     '<div class="fit-banner-title">' + FIT_CHECK_LG + ' Factory Fit</div>'
     '<p class="fit-banner-subtitle">This part is designed to fit your Cat equipment based on the manufacturer\'s specifications.</p>'
     '<p class="fit-banner-body">Any changes to the manufacturer\'s configuration might result in the product not fitting your Cat equipment. Please consult your Cat Dealer before purchasing to ensure that this part is appropriate for your Cat equipment in its current condition and assumed configuration. This indicator cannot guarantee compatibility for all parts.</p>'
-    '</div>'
-    '<div class="fit-banner-right">'
-    '<div class="fit-banner-item">' + REMAN_SVG + ' Remanufactured</div>'
-    '<div class="fit-banner-item">' + NO_RETURN_SVG + ' Non-Returnable</div>'
-    '<div class="fit-banner-item">' + KIT_SVG + ' Kit</div>'
-    '<div class="fit-banner-item">' + REPLACED_SVG + ' Replaced</div>'
     '</div>'
     '<button class="fit-banner-close" id="fitBannerClose" type="button" aria-label="Close">&times;</button>'
     '</div>'
@@ -224,10 +219,12 @@ def prod_card(num, name, desc, fit='fits', has_img=True):
     else:
         blend = ''
         img_cls = ' class="no-img"'
+    advance_hint = ('<p class="advance-hint">&#x25BA; Select to advance prototype</p>' if num == '567-4399' else '')
+    card_extra = ' id="protoCard"' if num == '567-4399' else ''
     return (
-        '<div class="prod-card">'
+        '<div class="prod-card' + ('' if num != '567-4399' else ' proto-card') + '"' + card_extra + '>'
         '<div class="prod-img">'
-        '<img src="' + img_src + '" alt="' + name + '" width="140" height="140"' + img_cls + blend + '>'
+        '<img src="' + img_src + '" alt="' + name + '" width="140" height="140"' + img_cls + blend + ' data-modal-img="1">'
         '</div>'
         '<div class="prod-info">'
         '<span class="prod-num">' + num + '</span>'
@@ -235,7 +232,8 @@ def prod_card(num, name, desc, fit='fits', has_img=True):
         '<p class="prod-desc">' + desc_html + '</p>'
         '<div class="prod-bottom">'
         + badge +
-        '<button class="add-cart-btn" type="button" onclick="return false;">Add to Cart</button>'
+        advance_hint +
+        '<button class="add-cart-btn" type="button">Add to Cart</button>'
         '</div>'
         '</div>'
         '</div>'
@@ -312,10 +310,11 @@ a{color:inherit;text-decoration:none;}
 .unit-toggle{display:flex;background:#E8E8E8;border-radius:20px;padding:2px;margin-bottom:12px;}
 .unit-btn{flex:1;border:none;background:none;padding:4px 10px;border-radius:18px;font-size:12px;font-family:inherit;cursor:pointer;color:#666;font-weight:500;transition:background .12s,color .12s;}
 .unit-btn.active{background:#fff;color:#111;font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12);}
-/* Spec filter labels */
-.spec-filter-label{padding:9px 0;font-size:13px;border-bottom:1px solid var(--border);color:var(--text);}
+/* Spec filter labels — accordion-looking, non-functional */
+.spec-filter-label{padding:9px 0;font-size:13px;border-bottom:1px solid var(--border);color:var(--text);display:flex;align-items:center;justify-content:space-between;cursor:default;user-select:none;}
+.spec-filter-label:hover{color:#000;}
 /* Equipment context button in search bar (L2/L3) — fixed width matches L1 "Add Equipment" pill */
-.equip-context-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--yellow);border:none;border-right:1px solid #D0D0D0;padding:0 14px;cursor:pointer;white-space:nowrap;flex-shrink:0;font-size:13px;font-weight:700;color:#111;font-family:inherit;height:36px;transition:background .12s;min-width:126px;}
+.equip-context-btn{display:flex;align-items:center;gap:6px;background:var(--yellow);border:none;border-right:1px solid #D0D0D0;padding:0 14px;cursor:pointer;white-space:nowrap;flex-shrink:0;font-size:13px;font-weight:700;color:#111;font-family:inherit;height:36px;transition:background .12s;min-width:126px;}
 .equip-context-btn:hover{background:#e6b800;}
 /* MAIN */
 .main-content{flex:1;min-width:0;}
@@ -412,23 +411,30 @@ a{color:inherit;text-decoration:none;}
 @media(prefers-reduced-motion:reduce){.ai-ring,.cat-logo img{animation:none!important;}}
 @media(max-width:900px){.sidebar{display:none;}.prod-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:600px){.prod-grid{grid-template-columns:1fr;}.lang-menu{width:280px;}.filter-sort-bar{flex-direction:column;align-items:flex-start;}}
-/* Cart quantity modal */
+/* Cart quantity modal — styled like a product card */
 .qty-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:center;justify-content:center;}
 .qty-modal-overlay.open{display:flex;}
-.qty-modal{background:#fff;border-radius:12px;padding:28px 24px 24px;min-width:300px;max-width:90vw;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.25);}
-.qty-modal-title{font-size:16px;font-weight:700;margin-bottom:6px;}
-.qty-modal-part{font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.4;}
-.qty-modal-close{position:absolute;top:10px;right:12px;background:none;border:none;cursor:pointer;font-size:20px;color:#bbb;padding:2px 6px;line-height:1;font-family:inherit;}
-.qty-modal-close:hover{color:#333;}
-.qty-input-row{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
-.qty-input-row label{font-size:13px;font-weight:600;flex-shrink:0;}
-.qty-input{width:72px;padding:7px 10px;border:1px solid #D0D0D0;border-radius:6px;font-size:14px;font-family:inherit;text-align:center;font-weight:600;outline:none;}
+.qty-modal{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;min-width:260px;max-width:340px;width:90vw;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.25);overflow:hidden;}
+.qty-modal-img-area{width:100%;height:150px;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);flex-shrink:0;}
+.qty-modal-img-area img{width:110px;height:110px;object-fit:contain;}
+.qty-modal-body{padding:12px 14px 14px;}
+.qty-modal-close{position:absolute;top:8px;right:10px;background:rgba(255,255,255,.85);border:none;cursor:pointer;font-size:18px;color:#555;padding:1px 6px;line-height:1;font-family:inherit;border-radius:4px;z-index:2;}
+.qty-modal-close:hover{color:#111;}
+.qty-modal-num{font-family:"Roboto Mono",monospace;font-size:11px;font-weight:500;color:#555;display:block;margin-bottom:3px;letter-spacing:.02em;}
+.qty-modal-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:12px;}
+.qty-input-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.qty-input-row label{font-size:13px;font-weight:600;flex-shrink:0;color:var(--text);}
+.qty-input{width:72px;padding:7px 10px;border:1px solid #D0D0D0;border-radius:6px;font-size:14px;font-family:inherit;text-align:center;font-weight:600;outline:none;background:#fff;color:#111;}
 .qty-input:focus{border-color:var(--yellow);box-shadow:0 0 0 2px rgba(255,205,17,.2);}
 .qty-modal-actions{display:flex;gap:10px;}
-.qty-cancel-btn{flex:1;background:none;border:1px solid #CCC;padding:9px;border-radius:22px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;color:var(--muted);transition:border-color .12s,color .12s;}
+.qty-cancel-btn{flex:1;background:#fff;border:1px solid #CCC;padding:9px;border-radius:22px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;color:var(--muted);transition:border-color .12s,color .12s;}
 .qty-cancel-btn:hover{border-color:#999;color:#333;}
-.qty-confirm-btn{flex:2;background:var(--yellow);border:none;padding:9px;border-radius:22px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .12s;}
+.qty-confirm-btn{flex:2;background:var(--yellow);border:none;padding:9px;border-radius:22px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;transition:background .12s;}
 .qty-confirm-btn:hover{background:#e6b800;}
+/* Prototype advance hint on 567-4399 card */
+.proto-card{cursor:pointer;}
+.proto-card:hover{border-color:#000;box-shadow:0 2px 10px rgba(0,0,0,.1);}
+.advance-hint{font-size:10px;color:#888;font-weight:500;text-align:center;padding:3px 0 0;letter-spacing:.02em;}
 /* Cart badge in header */
 .cart-btn-wrap{position:relative;display:inline-flex;}
 .cart-badge{background:var(--yellow);color:#111;border-radius:50%;width:16px;height:16px;font-size:9px;font-weight:700;display:none;align-items:center;justify-content:center;position:absolute;top:-2px;right:0;line-height:1;pointer-events:none;}
@@ -510,13 +516,15 @@ cat_links = "\n".join(
     for c, n in CATS
 )
 
+CHEVRON_SVG = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>'
+
 def spec_filter_html(label, options=None):
     if '(in)' in label:
         base = label.replace(' (in)', '')
         label_html = '<span>' + base + '<span class="lbl-us"> (in)</span><span class="lbl-mm" hidden> (mm)</span></span>'
     else:
         label_html = '<span>' + label + '</span>'
-    return '<div class="spec-filter-label">' + label_html + '</div>'
+    return '<div class="spec-filter-label">' + label_html + CHEVRON_SVG + '</div>'
 
 spec_html = "\n".join(spec_filter_html(label, opts) for label, opts in SPECS)
 
@@ -598,15 +606,20 @@ parts.append('</main>')
 parts.append("""<div class="qty-modal-overlay" id="qtyModal" role="dialog" aria-modal="true" aria-label="Add to Cart">
   <div class="qty-modal">
     <button class="qty-modal-close" id="qtyModalClose" type="button" aria-label="Close">&times;</button>
-    <div class="qty-modal-title">Add to Cart</div>
-    <div class="qty-modal-part" id="qtyModalPart"></div>
-    <div class="qty-input-row">
-      <label for="qtyInput">Quantity</label>
-      <input type="number" id="qtyInput" class="qty-input" value="1" min="1" max="999" aria-label="Quantity">
+    <div class="qty-modal-img-area">
+      <img id="qtyModalImg" src="" alt="" width="110" height="110">
     </div>
-    <div class="qty-modal-actions">
-      <button class="qty-cancel-btn" id="qtyCancelBtn" type="button">Cancel</button>
-      <button class="qty-confirm-btn" id="qtyConfirmBtn" type="button">Add to Cart</button>
+    <div class="qty-modal-body">
+      <span class="qty-modal-num" id="qtyModalNum"></span>
+      <p class="qty-modal-name" id="qtyModalName"></p>
+      <div class="qty-input-row">
+        <label for="qtyInput">Quantity</label>
+        <input type="number" id="qtyInput" class="qty-input" value="1" min="1" max="999" aria-label="Quantity">
+      </div>
+      <div class="qty-modal-actions">
+        <button class="qty-cancel-btn" id="qtyCancelBtn" type="button">Cancel</button>
+        <button class="qty-confirm-btn" id="qtyConfirmBtn" type="button">Add to Cart</button>
+      </div>
     </div>
   </div>
 </div>""")
@@ -746,10 +759,18 @@ parts.append("""<script>
   var cartCount=0;
   var cartBadge=document.getElementById('cartBadge');
   var qtyModal=document.getElementById('qtyModal');
-  var qtyModalPart=document.getElementById('qtyModalPart');
+  var qtyModalImg=document.getElementById('qtyModalImg');
+  var qtyModalNum=document.getElementById('qtyModalNum');
+  var qtyModalName=document.getElementById('qtyModalName');
   var qtyInputEl=document.getElementById('qtyInput');
-  function openQtyModal(partName){
-    if(qtyModalPart)qtyModalPart.textContent=partName;
+  function openQtyModal(partName,partNum,imgSrc,isRealImg){
+    if(qtyModalName)qtyModalName.textContent=partName;
+    if(qtyModalNum)qtyModalNum.textContent=partNum;
+    if(qtyModalImg){
+      qtyModalImg.src=imgSrc;
+      qtyModalImg.alt=partName;
+      qtyModalImg.style.mixBlendMode=isRealImg?'multiply':'normal';
+    }
     if(qtyInputEl){qtyInputEl.value=1;setTimeout(function(){qtyInputEl.select();},50);}
     if(qtyModal)qtyModal.classList.add('open');
   }
@@ -774,8 +795,11 @@ parts.append("""<script>
     var card=btn.closest('.prod-card');
     var nm=card?(card.querySelector('.prod-name')||{textContent:''}).textContent.trim():'Part';
     var pn=card?(card.querySelector('.prod-num')||{textContent:''}).textContent.trim():'';
+    var cardImg=card?card.querySelector('.prod-img img'):null;
+    var imgSrc=cardImg?cardImg.src:'';
+    var isReal=cardImg&&!cardImg.classList.contains('no-img');
     btn.onclick=null;
-    btn.addEventListener('click',function(e){e.preventDefault();openQtyModal(nm+(pn?' — '+pn:''));});
+    btn.addEventListener('click',function(e){e.preventDefault();openQtyModal(nm,pn,imgSrc,isReal);});
   });
 })();
 
