@@ -316,7 +316,7 @@ details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
 <div class="pdp-fit-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#2E7D32"/><polyline points="20 6 9 17 4 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Factory Fit</div>
 <p class="pdp-fit-machine">320 Excavator ZBN60173</p>
 <div class="pdp-cta">
-<button class="check-price-btn" type="button" onclick="openQtyModal('Swing Gear Bearing','567-4399','imgs/prod_567-4399.webp',true);">Check Price</button>
+<button class="check-price-btn" type="button">Check Price</button>
 </div>
 <div class="pdp-links"><a href="#">Warranty Information</a><a href="#">Return Policy</a></div>
 <hr class="pdp-divider">
@@ -417,21 +417,6 @@ details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
 </div>
 </main>
 
-<div class="qty-modal-overlay" id="qtyModal">
-<div class="qty-modal">
-<button class="qty-modal-close" id="qtyModalClose" type="button">&#215;</button>
-<div class="qty-modal-img-area"><img id="qtyModalImg" src="" alt="" width="110" height="110"></div>
-<div class="qty-modal-body">
-<span class="qty-modal-num" id="qtyModalNum"></span>
-<p class="qty-modal-name" id="qtyModalName"></p>
-<div class="qty-input-row"><label for="qtyInput">Qty:</label><input class="qty-input" id="qtyInput" type="number" min="1" value="1"></div>
-<div class="qty-modal-actions">
-<button class="qty-cancel-btn" id="qtyCancelBtn" type="button">Cancel</button>
-<button class="qty-confirm-btn" id="qtyConfirmBtn" type="button">Add to Cart</button>
-</div>
-</div>
-</div>
-</div>
 
 <footer class="site-footer">
 <div class="social-row" aria-label="Social media">
@@ -498,34 +483,6 @@ details.pdp-collapsible .pdp-collapsible-body{padding-bottom:8px;}
   btn.addEventListener('mouseleave', function() { hov = false; if (ad) { ring.style.animation = 'none'; ring.style.transform = 'rotate(0deg)'; } });
 })();
 
-var cartCount = 0;
-function openQtyModal(name, num, imgSrc, isReal) {
-  var modal = document.getElementById('qtyModal');
-  var img = document.getElementById('qtyModalImg');
-  document.getElementById('qtyModalNum').textContent = num;
-  document.getElementById('qtyModalName').textContent = name;
-  img.src = imgSrc;
-  img.style.mixBlendMode = isReal ? 'multiply' : 'normal';
-  document.getElementById('qtyInput').value = 1;
-  modal.classList.add('open');
-}
-document.getElementById('qtyModalClose').addEventListener('click', function() {
-  document.getElementById('qtyModal').classList.remove('open');
-});
-document.getElementById('qtyCancelBtn').addEventListener('click', function() {
-  document.getElementById('qtyModal').classList.remove('open');
-});
-document.getElementById('qtyConfirmBtn').addEventListener('click', function() {
-  var qty = parseInt(document.getElementById('qtyInput').value, 10) || 1;
-  cartCount += qty;
-  var badge = document.getElementById('cartBadge');
-  badge.textContent = cartCount;
-  badge.classList.add('visible');
-  document.getElementById('qtyModal').classList.remove('open');
-});
-document.getElementById('qtyModal').addEventListener('click', function(e) {
-  if (e.target === this) this.classList.remove('open');
-});
 
 (function(){
   var slides = document.querySelectorAll('.diagram-slide');
